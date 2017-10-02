@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admins
+
+  namespace :admin do
+    resources :pages
+    resources :blog_posts
+  end
+
+  get 'blog', to: 'blog#index'
+  get 'blog/*slug', to: 'blog#show'
+  get '*slug', to: 'pages#show'
+  root to: "pages#home"
 end
