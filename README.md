@@ -1,24 +1,48 @@
-# README
+# East Bay DSA website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project aims to replace the existing NationBuilder-backed site with a
+new website built in Rails, that gives us an easy platform for technical
+volunteers to join, and a solid foundation for building advanced features
+going forward.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+Dependencies:
 
-* System dependencies
+* Ruby >= 2.4.0
+* Postgres (postgresapp.com is a great option here)
+* bundler (gem install bundler)
+* foreman (gem install foreman)
 
-* Configuration
+### First time setup
 
-* Database creation
+Clone the repository source to local machine:
 
-* Database initialization
+```sh
+git clone git@github.com:eastbaydsa/website.git ebdsa-website
+cd ebdsa-website
+```
 
-* How to run the test suite
+In the cloned directory, install your gem dependencies with `bundler`:
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+bundle install
+```
 
-* Deployment instructions
+Create your database and run migrations:
 
-* ...
+```sh
+bin/rake db:setup
+```
+
+And start your local server with `foreman`:
+
+```sh
+foreman start
+```
+
+Your site will be available at http://localhost:5000
+
+## Deployment
+
+TBD but probably Heroku
