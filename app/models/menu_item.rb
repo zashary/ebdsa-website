@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: blog_posts
+# Table name: menu_items
 #
 #  id         :integer          not null, primary key
-#  title      :text
-#  content    :text
-#  posted_at  :datetime
+#  label      :string
 #  slug       :string
-#  author_id  :integer
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class BlogPost < ApplicationRecord
-  belongs_to :author, class_name: Admin
+class MenuItem < ApplicationRecord
+  acts_as_list top_of_list: 0
+
+  default_scope { order(position: :asc) }
 end
