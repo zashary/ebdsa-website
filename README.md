@@ -10,7 +10,9 @@ going forward.
 Dependencies:
 
 * Ruby >= 2.4.0
-* Postgres (postgresapp.com is a great option here)
+* Postgres 
+  * [postgresapp.com](https://postgresapp.com) is a great option here
+  * Alternatively, you can install with [homebrew](https://brew.sh/)
 * bundler (gem install bundler)
 * foreman (gem install foreman)
 
