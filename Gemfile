@@ -38,6 +38,8 @@ gem 'activeadmin'
 gem 'acts_as_list'
 gem 'activeadmin_sortable_table'
 gem 'autoprefixer-rails'
+gem 'nationbuilder-rb', require: 'nationbuilder'
+gem 'simple_calendar', '~> 2.0'
 gem 'trix'
 
 group :development, :test do
@@ -46,6 +48,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
   gem 'seed_dump'
 end
 
