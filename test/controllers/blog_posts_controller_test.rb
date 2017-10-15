@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class BlogPostsControllerTest < ActionDispatch::IntegrationTest
-  fixtures :blog_posts
-  
   setup do
     @blogs_uri = "/blog"
   end

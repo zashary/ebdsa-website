@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  fixtures :pages
-
   setup do
     @pages_uri = "/"
   end
