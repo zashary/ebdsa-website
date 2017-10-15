@@ -13,7 +13,7 @@
 #
 # Indexes
 #
-#  index_pages_on_slug  (slug) UNIQUE 
+#  index_pages_on_slug  (slug) UNIQUE
 #
 
 require 'test_helper'
