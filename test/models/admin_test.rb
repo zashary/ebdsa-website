@@ -14,6 +14,10 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #
+# Indexes
+#
+#  index_pages_on_slug  (slug) UNIQUE
+#
 
 require 'test_helper'
 
