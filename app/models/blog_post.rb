@@ -11,11 +11,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_blog_posts_on_author_id  (author_id)
-#  index_blog_posts_on_slug       (slug) UNIQUE
-#
 
 class BlogPost < ApplicationRecord
   include HasSlug

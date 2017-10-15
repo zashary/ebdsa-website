@@ -11,10 +11,6 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
-# Indexes
-#
-#  index_pages_on_slug  (slug) UNIQUE
-#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
@@ -23,3 +19,9 @@ test_page:
   title: Test Page
   content: This is some valuable content!
   slug: test-page
+
+another_test_page:
+  id: 98765
+  title: Yet Another Test Page
+  content: This page is even better!
+  slug: another-test-page

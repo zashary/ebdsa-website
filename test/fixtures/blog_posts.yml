@@ -11,11 +11,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_blog_posts_on_author_id  (author_id)
-#  index_blog_posts_on_slug       (slug) UNIQUE
-#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
@@ -25,3 +20,4 @@ test_blog_post:
   content: I am a fanatic lover of liberty, considering it as the unique condition under which intelligence, dignity and human happiness can develop and grow; not the purely formal liberty conceded, measured out and regulated by the State, an eternal lie which in reality represents nothing more than the privilege of some founded on the slavery of the rest; not the individualistic, egoistic, shabby, and fictitious liberty extolled by the School of J.-J. Rousseau and other schools of bourgeois liberalism, which considers the would-be rights of all men, represented by the State which limits the rights of each — an idea that leads inevitably to the reduction of the rights of each to zero.
   slug: test-post
   author_id: 12345
+  posted_at: <%= 5.day.ago.to_s(:db) %>
