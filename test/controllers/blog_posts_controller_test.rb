@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class BlogPostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @blogs_uri = "/blog"

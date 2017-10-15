@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @events_uri = "/events"

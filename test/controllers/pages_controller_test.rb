@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class PagesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @pages_uri = "/"
