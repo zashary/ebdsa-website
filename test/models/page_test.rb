@@ -13,8 +13,7 @@
 #
 # Indexes
 #
-#  index_blog_posts_on_author_id  (author_id)
-#  index_blog_posts_on_slug       (slug) UNIQUE
+#  index_pages_on_slug  (slug) UNIQUE 
 #
 
 require 'test_helper'
