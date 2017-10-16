@@ -12,12 +12,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  intro: MyText
-  featured_page_1: 
-  featured_page_2: 
-
-two:
-  intro: MyText
-  featured_page_1: 
-  featured_page_2: 
+test_home:
+  intro: Test Home
+  featured_page_1_id: 54321
+  featured_page_2_id: 98765
