@@ -11,15 +11,59 @@ $(document).ready(function() {
   $('.trix-editor-wrapper').on('trix-attachment-add', function(event) {
     var attachment = event.originalEvent.attachment;
     if (attachment.file) {
-      uploadAttachment(attachment);
+      uploadFile(attachment.file, function(progress) {
+        return attachment.setUploadProgress(progress);
+      }, function(url) {
+        return attachment.setAttributes({ url: url, href: url });
+      });
     }
+  });
+
+  $('.s3_url').each(function(i, form_element) {
+    setupS3UrlField($(form_element));
+    refreshImagePreview($(form_element));
   });
 });
 
 
-function uploadAttachment(attachment) {
-  var file = attachment.file;
+function setupS3UrlField($form_element) {
+  $form_element.find('.s3_url_loading').hide()
+  $form_element.find('.s3_url_file').on('change', function() {
+    var file = $(this)[0].files[0];
+    if (file) {
+      $form_element.find('.s3_url_img').hide();
+      updateUploadProgressDisplay($form_element, 0);
+      $form_element.find('.s3_url_loading').show();
+      uploadFile(file, function(progress) {
+        updateUploadProgressDisplay($form_element, progress);
+      }, function(url) {
+        $form_element.find('.s3_url_original_input').val(url);
+        var newImage = new Image();
+        newImage.onload = function() {
+          $form_element.find('.s3_url_loading').hide();
+          refreshImagePreview($form_element);
+        }
+        newImage.src = url;
+      });
+    }
+  });
+}
 
+
+function updateUploadProgressDisplay($form_element, progress) {
+  $form_element.find('.s3_url_loading').text('Uploading... ' + parseInt(progress) + '%');
+}
+
+
+function refreshImagePreview($form_element) {
+  var imgUrl = $form_element.find('.s3_url_original_input').val();
+  if (imgUrl) {
+    $form_element.find('.s3_url_img').attr('src', imgUrl).show();
+  }
+}
+
+
+function uploadFile(file, progressCallback, successCallback) {
   $.get('/admin/admins/get_presigned_url?filename=' + file.name, {}, function(uploadUrl) {
     $.ajax({
       type: 'PUT',
@@ -27,28 +71,23 @@ function uploadAttachment(attachment) {
       data: file,
       processData: false,
       contentType: false,
-      // Custom XHR with upload progress handler added.
-      xhr: function(){
+      error: function(xhr, textStatus, errorMsg) {
+        console.log(errorMsg);
+        alert('Failed to upload file: ' + textStatus + '. See the console for more detail.');
+      },
+      xhr: function() {
         var xhr = $.ajaxSettings.xhr();
         xhr.upload.onprogress = function(event) {
           var progress = event.loaded / event.total * 100;
-          return attachment.setUploadProgress(progress);
+          return progressCallback(progress);
         };
         return xhr;
       },
-      error: function(xhr, textStatus, errorMsg) {
-        console.log(errorMsg);
-        alert('Failed to upload attachment: ' + textStatus + '. See the console for more detail.');
-      },
-      success: function(data, msg, xhr){
+      success: function(data, msg, xhr) {
         // Strip off the signing token and other params to leave the plain URL.
-        var finalUrl = uploadUrl.substring(0, uploadUrl.lastIndexOf('?'));
-        return attachment.setAttributes({
-          url: finalUrl,
-          href: finalUrl
-        });
+        return successCallback(uploadUrl.substring(0, uploadUrl.lastIndexOf('?')));
       }
     });
-  }, 'text');
+  });
 }
 
