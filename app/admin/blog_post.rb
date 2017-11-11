@@ -27,6 +27,11 @@ ActiveAdmin.register BlogPost do
         @url = url_for(post)
         link_to(@url, @url, target: '_blank')
       end
+      row :featured_image do |post|
+        if post.featured_image != nil
+          image_tag(post.featured_image, style: 'width:200px;height:auto;')
+        end
+      end
       columns_to_exclude = ["title", "content"]
       (BlogPost.column_names - columns_to_exclude).each do |c|
         row c.to_sym
@@ -40,6 +45,7 @@ ActiveAdmin.register BlogPost do
     f.inputs do
       f.input :title, as: :string
       f.input :content, as: :trix_editor
+      f.input :featured_image, as: :s3_url
       f.input :slug, placeholder: 'Will be automatically generated if blank'
       f.input :author
       f.input :posted_at
@@ -47,5 +53,5 @@ ActiveAdmin.register BlogPost do
     f.actions
   end
 
-  permit_params :title, :content, :slug, :author_id, :posted_at
+  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image
 end
