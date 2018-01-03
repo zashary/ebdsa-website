@@ -9,6 +9,10 @@
 .footer {
   background: $dsa_grey;
   padding: 100px;
+
+  a {
+    color: $dsa_white;
+  }
 }
 
 .footer__nav {
@@ -47,4 +51,3 @@
   padding-bottom: $default_spacing/2;
   border-bottom: 4px solid transparent;
 }
-
