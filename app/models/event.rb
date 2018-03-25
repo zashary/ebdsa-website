@@ -11,6 +11,8 @@ class Event
     self.address = api_response['venue']['address'] || {}
   end
 
+  def to_param; id.to_s; end
+
   def address_string
     x = [
       [
