@@ -8,6 +8,7 @@
 #  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  container  :string
 #
 
 require 'test_helper'

@@ -46,7 +46,7 @@ ActiveAdmin.register BlogPost do
       f.input :title, as: :string
       f.input :content, as: :trix_editor
       f.input :featured_image, as: :s3_url
-      f.input :slug, placeholder: 'Will be automatically generated if blank'
+      f.input :slug, hint: 'Blog posts live at "/blog/:slug". Will be automatically generated if blank'
       f.input :author
       f.input :posted_at
     end

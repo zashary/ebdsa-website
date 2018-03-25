@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
 
   layout 'application'
 
-  before_action do
-    @menu = MenuItem.all
-  end
-
   def nation_builder_client
     unless @nation_builder_client
       unless ENV['NATION_NAME'] && ENV['NATION_API_TOKEN']
