@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: redirects
+#
+#  id         :integer          not null, primary key
+#  from_path  :string
+#  to_url     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  clicks     :integer          default(0)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_path: MyString
+  to_url: MyString
+
+two:
+  from_path: MyString
+  to_url: MyString
