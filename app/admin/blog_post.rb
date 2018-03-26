@@ -55,3 +55,4 @@ ActiveAdmin.register BlogPost do
 
   permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image
 end
+
