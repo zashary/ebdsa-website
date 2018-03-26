@@ -27,7 +27,7 @@
         <%= link_to(image_tag('dsa-logo-with-text.svg', class: 'header__logo'), root_path) %>
 
         <ul class='header__menu'>
-          <% @menu.each do |item| %>
+          <% header_menu_items.each do |item| %>
             <li class='header__menu_item'><%= link_to item.label, '/' + item.slug %></li>
           <% end %>
         </ul>
@@ -46,20 +46,9 @@
         <div>
           <h3>Get Involved</h3>
           <ul class='footer__nav_list'>
-            <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'About', '/about' %></li>
-            <li><%= link_to 'Events', '/events' %></li>
-            <li><%= link_to 'News', '/blog' %></li>
-            <li><%= link_to 'Resources', '/resoures' %></li>
-            <li><%= link_to 'Campaigns', '/campaigns' %></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Donate</h3>
-          <ul class='footer__nav_list'>
-            <li><%= link_to 'Donate', '/donate' %></li>
-            <li><%= link_to 'Store', '/store' %></li>
-            <li><%= link_to 'Join', '/join' %></li>
+            <% footer_menu_items.each do |item| %>
+              <li><%= link_to item.label, item.slug %></li>
+            <% end %>
           </ul>
         </div>
         <div>

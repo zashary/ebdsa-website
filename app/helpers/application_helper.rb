@@ -10,4 +10,12 @@ module ApplicationHelper
   def format_time_short time
     time.strftime("%-l:%M%P")
   end
+
+  def header_menu_items
+    @header_menu_items ||= MenuItem.header
+  end
+
+  def footer_menu_items
+    @footer_menu_items ||= MenuItem.footer
+  end
 end
