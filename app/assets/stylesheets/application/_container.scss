@@ -8,6 +8,10 @@
   flex: 1;
 }
 
+.container-sm {
+  max-width: $sm_max_width;
+}
+
 .container--flex {
   @extend .container;
 
