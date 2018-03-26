@@ -8,11 +8,12 @@
 #  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  container  :string
+#  container  :integer
 #
 
 class MenuItem < ApplicationRecord
   acts_as_list top_of_list: 0
+  enum container: [ :header, :footer ]
 
   default_scope { order(position: :asc) }
 

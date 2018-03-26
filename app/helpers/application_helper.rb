@@ -12,10 +12,10 @@ module ApplicationHelper
   end
 
   def header_menu_items
-    @header_menu_items ||= MenuItem.where(container: 'header')
+    @header_menu_items ||= MenuItem.header
   end
 
   def footer_menu_items
-    @footer_menu_items ||= MenuItem.where(container: 'footer')
+    @footer_menu_items ||= MenuItem.footer
   end
 end
