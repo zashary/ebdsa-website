@@ -5,6 +5,14 @@ article, p {
   margin-bottom: $default_spacing;
 }
 
+.trix-output {
+  line-height: 1.4em;
+  //trix outputs divs instead of <p> tags,
+  //we can style them with something like this:
+  div {}
+}
+ 
+
 h1 {
   font-size: $large_heading_font_size;
   margin-bottom: $default_spacing;

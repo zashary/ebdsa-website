@@ -17,5 +17,8 @@ module EbdsaWebsite
 
     # Simple Calendar config
     config.beginning_of_week = :sunday
+
+    # Set default time zone to PST
+    config.time_zone = 'Pacific Time (US & Canada)'
   end
 end

@@ -8,10 +8,18 @@
 .featured-page,
 .upcoming-events {
   padding: $default_spacing 0;
+  .event {
+    padding: 20px 20px 10px;
+    background: $dsa_red;
+    color: white;
+    h1, h2, p, a { color: white; }
+    a { text-decoration: underline; }
+    p { margin-bottom: 10px; }
+  }
 }
 
 .home-intro {
-  background: #eee;
+  background: white;
   border-bottom: 3px solid $dsa_red;
   background-repeat: no-repeat;
   background-position: center center;
