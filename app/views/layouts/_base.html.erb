@@ -28,7 +28,7 @@
 
         <ul class='header__menu'>
           <% header_menu_items.each do |item| %>
-            <li class='header__menu_item'><%= link_to item.label, '/' + item.slug %></li>
+            <li class='header__menu_item'><%= link_to item.label, item.slug %></li>
           <% end %>
         </ul>
 
