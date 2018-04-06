@@ -16,7 +16,6 @@
   </article>
 
   <div class="subpages">
-    <% flip = true %>
     <% @page.subpages.each_with_index do |subpage, index| %>
       <%= link_to page_path(subpage), class: "subpages--subpage" do %>
         <span><%= subpage.subtitle %>&nbsp;</span>
