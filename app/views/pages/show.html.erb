@@ -1,6 +1,15 @@
 <%= content_for :title, @page.title %>
 
 <div class="content__centered">
+  <% if @page.parent %>
+    <div class='breadcrumbs'>
+      <% for parent in @page.all_parents.reverse %>
+        <%= link_to parent.title, parent.slug %>
+        &raquo;
+      <% end %>
+      <%= @page.title %>
+    </div>
+  <% end %>
   <article>
     <h1><%= @page.title %></h1>
 
