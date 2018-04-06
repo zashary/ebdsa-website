@@ -1,17 +1,27 @@
-<% @posts.each do |post| %>
-  <article class='blog-post__snippet'>
-      <div class='blog-post__header-snippet'>
-          <h2><%= post.title %></h2>
-          <div class='blog-post__posted-at-snippet'>
-              Posted
-              <%= post.posted_at.localtime.to_s(:long) %>
-              by
-              <%= post.author %>
-          </div>
-      </div>
-      <p>
-          <%= truncate(strip_tags(post.content), length: 600) %>
-          <%= link_to '(Read more)', blog_post_path(post.slug) %>
-      </p>
-  </article>
-<% end %>
+<div class="content__centered">
+  <h1>Blog posts</h1>
+  <hr>
+  <br>
+  <br>
+  <% if params[:page].to_i > 1 %>
+    <div class='digg_pagination'>
+      <%= will_paginate @posts %>
+    </div>
+    <br>
+  <% end %>
+  <% @posts.each do |post| %>
+    <article class='blog-post__snippet'>
+        <div class='blog-post__header-snippet'>
+          <h2><%= link_to post.title, blog_post_path(post) %></h2>
+        </div>
+        <p>
+        <%= truncate(strip_tags(post.content), length: 600) %>
+        <%= link_to '(Read more)', blog_post_path(post.slug) %>
+        </p>
+    </article>
+    <br>
+  <% end %>
+  <div class='digg_pagination'>
+    <%= will_paginate @posts %>
+  </div>
+</div>
