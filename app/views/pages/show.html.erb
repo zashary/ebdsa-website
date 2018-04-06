@@ -4,8 +4,7 @@
   <% if @page.parent %>
     <div class='breadcrumbs'>
       <% for parent in @page.all_parents.reverse %>
-        <%= link_to parent.title, parent.slug %>
-        &raquo;
+        <%= link_to parent.title, parent.slug %> &raquo;
       <% end %>
       <%= @page.title %>
     </div>
