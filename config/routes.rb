@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :show]
 
-  get 'blog', to: 'blog_posts#index'
+  get 'blog', to: 'blog_posts#index', as: 'blog_posts'
   get 'blog/*slug', to: 'blog_posts#show', as: 'blog_post'
   get 'newsletter', to: 'newsletter#index'
   post 'newsletter', to: 'newsletter#create', as: 'submit_newsletter'

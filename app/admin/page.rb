@@ -8,7 +8,6 @@ ActiveAdmin.register Page do
     column :content do |post|
       truncate(strip_tags(post.content), length: 300)
     end
-    column :show_in_menu
     column :direct_link do |page|
       @url = url_for(page)
       link_to(@url, @url, target: '_blank')
@@ -39,7 +38,7 @@ ActiveAdmin.register Page do
     f.inputs do
       f.input :title, as: :string
       f.input :content, as: :trix_editor
-      f.input :slug, hint: 'This is the FULL path of the page after our root domain, and it has nothing to do with parent/child pages. E.g. if you want a page to live at "/about/mission", put "/about/mission" here.'
+      f.input :slug, hint: 'This is the FULL path of the page after our root domain, and it has nothing to do with parent/child pages. E.g. if you want a page to live at "eastbaydsa.org/about/mission", put "about/mission" here.'
       f.input :parent
       f.input :subtitle, as: :string, hint: "Used when displaying a link to a subpage"
     end
