@@ -1,6 +1,8 @@
+<% content_for :title, @post.title %>
+
 <div class="content__centered">
   <div class="breadcrumbs">
-    <%= link_to "Blog", blog_posts_path %> &raquo; <%= @post.title %>
+    <%= link_to "News", blog_posts_path %> &raquo; <%= @post.title %>
   </div>
 
   <div class='blog-post__header'>
