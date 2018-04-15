@@ -1,10 +1,7 @@
 <% content_for :title, 'News' %>
 
-<div class="content__centered">
+<div id="news" class="content__centered">
   <h1>News</h1>
-  <hr>
-  <br>
-  <br>
   <% if params[:page].to_i > 1 %>
     <div class='digg_pagination'>
       <%= will_paginate @posts %>
