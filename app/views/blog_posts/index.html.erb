@@ -14,11 +14,21 @@
   <% @posts.each do |post| %>
     <article class='blog-post__snippet'>
         <div class='blog-post__header-snippet'>
-          <h2><%= link_to post.title, blog_post_path(post) %></h2>
+          <h2><%= link_to post.title, blog_post_path(
+            year: post.posted_at.year,
+            month: post.posted_at.month,
+            day: post.posted_at.day,
+            slug: post.slug
+          ) %></h2>
         </div>
         <p>
         <%= truncate(strip_tags(post.content), length: 600) %>
-        <%= link_to '(Read more)', blog_post_path(post.slug) %>
+        <%= link_to '(Read more)', blog_post_path(
+          year: post.posted_at.year,
+          month: post.posted_at.month,
+          day: post.posted_at.day,
+          slug: post.slug
+          ) %>
         </p>
     </article>
     <br>

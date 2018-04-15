@@ -12,7 +12,12 @@ ActiveAdmin.register BlogPost do
     column :author
     column :listed
     column :direct_link do |post|
-      @url = url_for(post)
+      @url = blog_post_path(
+        year: post.posted_at.year,
+        month: post.posted_at.month,
+        day: post.posted_at.day,
+        slug: post.slug
+      )
       link_to(@url, @url, target: '_blank')
     end
     actions
@@ -25,7 +30,12 @@ ActiveAdmin.register BlogPost do
         post.content.html_safe
       end
       row :direct_link do |post|
-        @url = url_for(post)
+        @url = blog_post_path(
+          year: post.posted_at.year,
+          month: post.posted_at.month,
+          day: post.posted_at.day,
+          slug: post.slug
+        )
         link_to(@url, @url, target: '_blank')
       end
       row :featured_image do |post|
