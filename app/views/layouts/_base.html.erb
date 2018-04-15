@@ -2,7 +2,7 @@
 <html>
   <head>
     <% title = yield :title %>
-    <title>East Bay DSA <%= title.blank? ? '' : "| #{title}" %></title>
+    <title><%= title.blank? ? '' : "#{title} | " %>East Bay DSA</title>
     <%= csrf_meta_tags %>
 
     <% if ENV['GOOGLE_ANALYTICS_ID'] %>
