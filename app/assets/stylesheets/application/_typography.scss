@@ -1,17 +1,26 @@
 @import 'variables';
 
-article, p {
+article,
+p {
   line-height: 1.75;
   margin-bottom: $default_spacing;
+}
+
+article {
+  li {
+    margin-left: $default_spacing;
+    line-height: 1.75;
+    list-style-position: outside;
+  }
 }
 
 .trix-output {
   line-height: 1.4em;
   //trix outputs divs instead of <p> tags,
   //we can style them with something like this:
-  div {}
+  div {
+  }
 }
- 
 
 h1 {
   font-size: $large_heading_font_size;
