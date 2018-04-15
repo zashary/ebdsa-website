@@ -27,7 +27,9 @@ ActiveAdmin.register BlogPost do
     attributes_table do
       row :title
       row :content do |post|
-        post.content.html_safe
+        article class: 'content' do
+          post.content.html_safe
+        end
       end
       row :direct_link do |post|
         @url = blog_post_path(

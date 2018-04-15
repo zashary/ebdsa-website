@@ -21,7 +21,9 @@ ActiveAdmin.register Page do
       row :title
       row :subtitle
       row :content do |page|
-        page.content.html_safe
+        article class: 'content' do
+          page.content.html_safe
+        end
       end
       row :direct_link do |page|
         @url = url_for(page)

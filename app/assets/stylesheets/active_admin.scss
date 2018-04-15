@@ -8,10 +8,10 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
-@import "activeadmin_sortable_table";
-@import "trix";
+@import 'active_admin/mixins';
+@import 'active_admin/base';
+@import 'activeadmin_sortable_table';
+@import 'trix';
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -19,4 +19,26 @@
 //   .status_tag { background: #6090DB; }
 .attributes_table .attachment {
   text-align: center;
+}
+
+article.content {
+  max-width: 600px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+fieldset.inputs .input {
+  clear: both;
+}
+
+.trix-editor-wrapper {
+  width: 800px;
+  float: left;
+}
+
+trix-editor {
+  background: white;
 }

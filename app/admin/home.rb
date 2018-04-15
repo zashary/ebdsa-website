@@ -16,7 +16,9 @@ ActiveAdmin.register Home do
   show do
     attributes_table do
       row :intro do |home|
-        home.intro.html_safe
+        article class: 'content' do
+          home.intro.html_safe
+        end
       end
       row :featured_image do |home|
         if home.featured_image != nil
