@@ -11,6 +11,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  featured_image :string
+#  listed         :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -20,6 +21,8 @@
 
 class BlogPost < ApplicationRecord
   include HasSlug
+
+  scope :listed, -> { where(listed: true) }
 
   belongs_to :author, class_name: 'Admin'
   alias_attribute :to_param, :slug

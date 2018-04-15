@@ -10,6 +10,7 @@ ActiveAdmin.register BlogPost do
     end
     column :posted_at
     column :author
+    column :listed
     column :direct_link do |post|
       @url = url_for(post)
       link_to(@url, @url, target: '_blank')
@@ -49,9 +50,10 @@ ActiveAdmin.register BlogPost do
       f.input :slug, hint: 'Blog posts live at "/blog/:slug". Will be automatically generated if blank'
       f.input :author
       f.input :posted_at
+      f.input :listed, hint: 'Unlisted posts can still be visited by URL, but will not show up in the main list of posts'
     end
     f.actions
   end
 
-  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image
+  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image, :listed
 end

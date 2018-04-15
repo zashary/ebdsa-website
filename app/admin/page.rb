@@ -8,6 +8,7 @@ ActiveAdmin.register Page do
     column :content do |post|
       truncate(strip_tags(post.content), length: 300)
     end
+    column :listed
     column :direct_link do |page|
       @url = url_for(page)
       link_to(@url, @url, target: '_blank')
@@ -41,9 +42,10 @@ ActiveAdmin.register Page do
       f.input :slug, hint: 'This is the FULL path of the page after our root domain, and it has nothing to do with parent/child pages. E.g. if you want a page to live at "eastbaydsa.org/about/mission", put "about/mission" here.'
       f.input :parent
       f.input :subtitle, as: :string, hint: "Used when displaying a link to a subpage"
+      f.input :listed, hint: 'Unlisted pages can still be visited by URL, but will not show up as a sub-page'
     end
     f.actions
   end
 
-  permit_params :title, :subtitle, :content, :slug, :parent_id
+  permit_params :title, :subtitle, :content, :slug, :parent_id, :listed
 end

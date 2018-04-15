@@ -11,6 +11,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  subtitle     :text
+#  listed       :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -19,6 +20,8 @@
 
 class Page < ApplicationRecord
   include HasSlug
+
+  scope :listed, -> { where(listed: true) }
 
   has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true

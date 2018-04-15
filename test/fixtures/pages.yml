@@ -11,6 +11,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  subtitle     :text
+#  listed       :boolean          default(TRUE)
 #
 # Indexes
 #
