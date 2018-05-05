@@ -46,8 +46,12 @@ ActiveAdmin.register Page do
       f.input :subtitle, as: :string, hint: "Used when displaying a link to a subpage"
       f.input :listed, hint: 'Unlisted pages can still be visited by URL, but will not show up as a sub-page'
     end
+    f.inputs 'Sign Up' do
+      f.input :show_form, hint: 'Display a sign-up form on the page'
+      f.input :form_tags, hint: 'Comma separate list of NationBuilder tags to add when someone signs up'
+    end
     f.actions
   end
 
-  permit_params :title, :subtitle, :content, :slug, :parent_id, :listed
+  permit_params :title, :subtitle, :content, :slug, :parent_id, :listed, :show_form, :form_tags
 end

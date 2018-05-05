@@ -1,0 +1,11 @@
+  <%= form_tag signup_path do %>
+    <%if @state == 'error' %>
+      <div class='signup__error'>Error: E-mail cannot be blank!</div>
+    <% end %>
+    <div class='signup'>
+      <input name='email' type='email' placeholder='E-mail' class='signup__email'/>
+      <%= hidden_field_tag 'tags', @page.form_tags %>
+      <%= submit_tag 'Submit', class: 'signup__button' %>
+    </div>
+  <% end %>
+</div>
