@@ -48,7 +48,7 @@ ActiveAdmin.register Page do
     end
     f.inputs 'Sign Up' do
       f.input :show_form, hint: 'Display a sign-up form on the page'
-      f.input :form_tags, hint: 'Comma separate list of NationBuilder tags to add when someone signs up'
+      f.input :form_tags, hint: 'Comma-separated list of NationBuilder tags to add when someone signs up'
     end
     f.actions
   end
