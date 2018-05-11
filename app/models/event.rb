@@ -11,9 +11,7 @@
     self.address = api_response['venue']['address'] || {}
   end
 
-  def to_param
-    "#{id}--#{slug}"
-  end
+  def to_param; id; end
 
   def slug
     "#{start_time.to_date}-#{name}".parameterize
