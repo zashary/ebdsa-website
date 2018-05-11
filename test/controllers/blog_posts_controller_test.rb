@@ -25,7 +25,7 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get "#{@blogs_uri}/#{blog_posts(:test_blog_post).slug}"
+    get "#{@blogs_uri}/#{post.posted_at.year}/#{post.posted_at.month}/#{post.posted_at.day}/#{post.slug}"
     assert_response :success
   end
 end
