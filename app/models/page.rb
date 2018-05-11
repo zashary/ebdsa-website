@@ -28,6 +28,8 @@ class Page < ApplicationRecord
   has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true
 
+  validates :form_tags, presence: true, if: :show_form?
+
   alias_attribute :to_param, :slug
 
   def all_parents

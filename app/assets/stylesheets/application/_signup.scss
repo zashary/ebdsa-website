@@ -24,3 +24,8 @@
     background: $dsa_purple;
   }
 }
+
+@media (max-width: 600px) {
+  .signup { display: block; }
+  .signup__email { margin-bottom: 9px; }
+}
