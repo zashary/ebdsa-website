@@ -6,8 +6,7 @@ Rails.application.routes.draw do
 
   get 'news', to: 'blog_posts#index', as: 'blog_posts'
   get 'news/:year/:month/:day/:slug', to: 'blog_posts#show', as: 'blog_post'
-  get 'newsletter', to: 'newsletter#index'
-  post 'newsletter', to: 'newsletter#create', as: 'submit_newsletter'
+  post 'signup', to: 'signups#create', as: 'signup'
   get '*slug', to: 'pages#show', as: 'page'
   root to: "pages#home"
 end

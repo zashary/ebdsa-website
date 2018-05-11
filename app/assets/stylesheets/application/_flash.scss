@@ -1,0 +1,16 @@
+@import 'variables';
+
+.flash {
+  padding: $compact_spacing;
+  background: $mid_grey_background;
+  margin-bottom: $default_spacing;
+}
+
+.flash__success {
+  color: $dsa_white;
+  background: $dsa_blue;
+}
+.flash__error {
+  color: $dsa_white;
+  background: $dsa_red;
+}

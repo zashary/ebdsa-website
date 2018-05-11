@@ -16,7 +16,7 @@ require 'test_helper'
 
 class BlogPostsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @blogs_uri = "/blog"
+    @blogs_uri = "/news"
   end
 
   test "index" do
@@ -24,8 +24,9 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "show" do 
-    get "#{@blogs_uri}/#{blog_posts(:test_blog_post).slug}"
+  test "show" do
+    post = blog_posts(:test_blog_post)
+    get "#{@blogs_uri}/#{post.posted_at.year}/#{post.posted_at.month}/#{post.posted_at.day}/#{post.slug}"
     assert_response :success
   end
 end

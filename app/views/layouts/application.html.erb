@@ -1,9 +1,11 @@
 <%= render layout: 'layouts/base' do %>
   <div class='container'>
     <div class='content'>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
-      <% end %>
+      <div class='content__centered'>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "flash flash__#{name}" %>
+        <% end %>
+      </div>
 
       <%= yield %>
     </div>
