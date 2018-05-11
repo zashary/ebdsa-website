@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
-  before_action do
-    raise 'You must set NATION_SITE_SLUG in your .env to access this feature.' unless ENV['NATION_SITE_SLUG']
-  end
+  before_action :require_nationbuilder_slug
 
   def index
     @start_date = if params[:start_date]
