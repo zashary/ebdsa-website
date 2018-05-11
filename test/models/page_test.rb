@@ -12,6 +12,8 @@
 #  updated_at   :datetime         not null
 #  subtitle     :text
 #  listed       :boolean          default(TRUE)
+#  show_form    :boolean          default(FALSE), not null
+#  form_tags    :string
 #
 # Indexes
 #

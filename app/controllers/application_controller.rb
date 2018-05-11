@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
     end
     @nation_builder_client
   end
+
+  def require_nationbuilder_slug
+    unless ENV['NATION_SITE_SLUG']
+      raise 'You must set NATION_SITE_SLUG in your .env to access this feature.'
+    end
+  end
+
 end
