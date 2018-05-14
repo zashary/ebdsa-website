@@ -1,51 +1,33 @@
-<div class='home-container'>
-  <div class='home-intro'><!-- style="background-image:url(<%= @home.featured_image %>);">-->
-    <div class='container container-sm'>
-      <div class='trix-output'>
-        <%= @home.intro.html_safe %>
-      </div>
-    </div>
+<!-- <div class='home-intro'> style="background-image:url(<%= @home.featured_image %>);">-->
+<div class='container'>
+  <div class='trix-output'>
+    <%= @home.intro.html_safe %>
   </div>
-
-  <!--
-  <div class='featured-page'>
-    <div class='container'>
-      <div class='featured-page__item'>
-        <h4><%= @home.featured_page_1.title %></h4>
-        <%= link_to 'Learn more', page_path(@home.featured_page_1.slug), class: 'button ' %>
-      </div>
-      <div class='featured-page__item'>
-        <h4><%= @home.featured_page_2.title %></h4>
-        <%= link_to 'Learn more', page_path(@home.featured_page_2.slug), class: 'button' %>
-      </div>
-    </div>
-  </div>
-  -->
-
-  <% if @event.present? %>
-    <div class='upcoming-events'>
-      <div class='container container-sm'>
-        <h2>Join us at our next event</h2>
-        <p>The best way to get involved is to show up in-person.
-           We would love to see you at our next event&hellip;</p>
-        <div class='event'>
-          <h2><%= link_to @event.name, event_path(@event) %></h2>
-          <p>
-            <%= @event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %><br>
-            <%= @event.venue %>
-            <% if @event.address['city'] and @event.address['state'] %>
-              in
-              <%= @event.address['city'] %>,
-              <%= @event.address['state'] %>
-            <% end %>
-          </p>
-          <p><%= link_to 'Details', event_path(@event) %></p>
-        </div>
-        <p>
-          See more
-          <%= link_to 'upcoming meetings and actions &raquo;'.html_safe, events_path %>
-        </p>
-      </div>
-    </div>
-  <% end %>
 </div>
+
+<% if @event.present? %>
+  <div class='upcoming-events'>
+    <div class='container container-sm'>
+      <h2>Join us at our next event</h2>
+      <p>The best way to get involved is to show up in-person.
+         We would love to see you at our next event&hellip;</p>
+      <div class='event'>
+        <h2><%= link_to @event.name, event_path(@event) %></h2>
+        <p>
+          <%= @event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %><br>
+          <%= @event.venue %>
+          <% if @event.address['city'] and @event.address['state'] %>
+            in
+            <%= @event.address['city'] %>,
+            <%= @event.address['state'] %>
+          <% end %>
+        </p>
+        <p><%= link_to 'Details', event_path(@event) %></p>
+      </div>
+      <p>
+        See more
+        <%= link_to 'upcoming meetings and actions &raquo;'.html_safe, events_path %>
+      </p>
+    </div>
+  </div>
+<% end %>

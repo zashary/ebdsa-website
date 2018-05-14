@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
   before_action :check_for_redirects, only: :show
-  layout 'home', only: 'home'
 
   def home
-
     @home = Home.first
     raise 'Please create a homepage object first' unless @home
 
-    @event = Event.query(Date.today, nil, 4).first
+    @event = Event.query(Date.today, nil, 3).first
   end
 
   def show

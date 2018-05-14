@@ -1,0 +1,33 @@
+@import 'variables';
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: $default_spacing;
+}
+
+.card-link {
+  background: $dsa_dark_purple;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: $default_spacing;
+  margin-bottom: $default_spacing;
+  text-decoration: none;
+  width: 48%;
+  .title {
+    text-decoration: underline;
+    margin-bottom: 8px;
+  }
+
+  &:nth-child(4n),
+  &:nth-child(4n+1) {
+    background: $dsa_red;
+  }
+
+  &:nth-child(2n+1) {
+    margin-right: $default_spacing;
+  }
+
+}

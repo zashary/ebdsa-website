@@ -5,24 +5,4 @@
   margin: 0 auto;
   max-width: $max_width;
   width: 100%;
-  flex: 1;
-}
-
-.container-sm {
-  max-width: $sm_max_width;
-}
-
-.container--flex {
-  @extend .container;
-
-  display: flex;
-  align-items: center;
-}
-
-.container--flex-between {
-  @extend .container;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

@@ -4,13 +4,9 @@
   padding: $compact_spacing;
   background: $mid_grey_background;
   margin-bottom: $default_spacing;
+  color: $dsa_white;
 }
 
-.flash__success {
-  color: $dsa_white;
-  background: $dsa_blue;
-}
-.flash__error {
-  color: $dsa_white;
-  background: $dsa_red;
-}
+.flash__success { background: #22A01F; }
+.flash__info { background: $dsa_blue; }
+.flash__error { background: #E8C054; }
