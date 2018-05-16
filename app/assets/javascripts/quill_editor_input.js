@@ -42,7 +42,7 @@ window.onload = function() {
           ['link', 'image', 'video']
         ],
         handlers: {
-          'image': editor__imageHandler
+          //'image': editor__imageHandler
         }
       }
     },
