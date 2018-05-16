@@ -1,8 +1,3 @@
-<!-- <div class='home-intro'> style="background-image:url(<%= @home.featured_image %>);">-->
-<div class='trix-output'>
-  <%= @home.intro.html_safe %>
-</div>
-
 <% if @events.present? %>
   <h1>Upcoming events</h1>
   <% @events.each do |event| %>
@@ -26,3 +21,4 @@
     <%= link_to 'More upcoming events', events_path, class: 'button button-primary' %>
   </p>
 <% end %>
+

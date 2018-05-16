@@ -42,4 +42,6 @@ class Page < ApplicationRecord
     end
     parents
   end
+
+  def home?; slug == 'home'; end
 end

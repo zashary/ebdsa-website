@@ -11,13 +11,17 @@
   <% end %>
 <% end %>
 
-<div class='breadcrumbs'>
-  <%= link_to 'Home', root_url %> &raquo;
-  <% for parent in @page.all_parents.reverse %>
-    <%= link_to parent.title, page_path(parent) %> &raquo;
-  <% end %>
-  <%= @page.title %>
-</div>
+
+<% unless @page.home? %>
+  <div class='breadcrumbs'>
+    <%= link_to 'Home', root_url %> &raquo;
+    <% for parent in @page.all_parents.reverse %>
+      <%= link_to parent.title, page_path(parent) %> &raquo;
+    <% end %>
+    <%= @page.title %>
+  </div>
+<% end %>
+
 
 <article>
   <% if @page.background_image_url.blank? %>
@@ -44,3 +48,7 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @page.home? %>
+  <%= render 'upcoming_events' %>
+<% end %>
