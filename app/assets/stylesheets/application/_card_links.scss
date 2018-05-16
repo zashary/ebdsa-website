@@ -16,10 +16,8 @@
   margin-bottom: $default_spacing;
   text-decoration: none;
   width: 48%;
-  .title {
-    text-decoration: underline;
-    margin-bottom: 8px;
-  }
+  .title { text-decoration: underline; }
+  .subtitle { margin-top: 8px; }
 
   &:nth-child(4n),
   &:nth-child(4n+1) {

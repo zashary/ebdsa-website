@@ -10,8 +10,9 @@
   display: inline-block;
   background: $dsa_white;
   border: 1px solid $dsa_red;
-  padding: 7px 20px;
+  padding: 11.5px 20px 11.5px;
   text-align: center;
+  text-decoration: none;
   font-size: $default_font_size;
   height: 50px;
   transition: all .4s cubic-bezier(.25,.8,.25,1);

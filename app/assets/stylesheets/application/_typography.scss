@@ -4,6 +4,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, article {
   margin-top: 0;
   margin-bottom: $default_spacing;
   line-height: 1.5;
+  font-weight: normal;
 }
 
 p { margin-bottom: $compact_spacing; }

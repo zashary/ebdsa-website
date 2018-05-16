@@ -1,33 +1,28 @@
 <!-- <div class='home-intro'> style="background-image:url(<%= @home.featured_image %>);">-->
-<div class='container'>
-  <div class='trix-output'>
-    <%= @home.intro.html_safe %>
-  </div>
+<div class='trix-output'>
+  <%= @home.intro.html_safe %>
 </div>
 
-<% if @event.present? %>
-  <div class='upcoming-events'>
-    <div class='container container-sm'>
-      <h2>Join us at our next event</h2>
-      <p>The best way to get involved is to show up in-person.
-         We would love to see you at our next event&hellip;</p>
-      <div class='event'>
-        <h2><%= link_to @event.name, event_path(@event) %></h2>
-        <p>
-          <%= @event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %><br>
-          <%= @event.venue %>
-          <% if @event.address['city'] and @event.address['state'] %>
-            in
-            <%= @event.address['city'] %>,
-            <%= @event.address['state'] %>
-          <% end %>
-        </p>
-        <p><%= link_to 'Details', event_path(@event) %></p>
-      </div>
+<% if @events.present? %>
+  <h1>Upcoming events</h1>
+  <% @events.each do |event| %>
+    <article>
       <p>
-        See more
-        <%= link_to 'upcoming meetings and actions &raquo;'.html_safe, events_path %>
+        <%= link_to event.name, event_path(event) %><br>
+        <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
       </p>
-    </div>
-  </div>
+      <!--
+            <%= event.venue %>
+            <% if event.address['city'] and event.address['state'] %>
+              in
+              <%= event.address['city'] %>,
+              <%= event.address['state'] %>
+            <% end %>
+      -->
+    </article>
+  <% end %>
+
+  <p>
+    <%= link_to 'More upcoming events', events_path, class: 'button button-primary' %>
+  </p>
 <% end %>

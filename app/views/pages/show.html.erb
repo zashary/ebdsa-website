@@ -3,12 +3,15 @@
 <div class='breadcrumbs'>
   <%= link_to 'Home', root_url %> &raquo;
   <% for parent in @page.all_parents.reverse %>
-    <%= link_to parent.title, parent.slug %> &raquo;
+    <%= link_to parent.title, page_path(parent) %> &raquo;
   <% end %>
   <%= @page.title %>
 </div>
 <article>
-  <h1><%= @page.title %></h1>
+  <div class='hero'>
+    <%= content_tag(:h1, @page.title) %>
+    <%= content_tag(:p, @page.subtitle) if @page.subtitle.present? %>
+  </div>
 
   <%= @page.content.html_safe %>
 </article>
@@ -21,7 +24,9 @@
   <% @page.subpages.listed.each_with_index do |subpage, index| %>
     <%= link_to page_path(subpage), class: "card-link" do %>
       <span class='title'><%= subpage.title %></span>
-      <span class='subtitle'><%= subpage.subtitle %></span>
+      <% if subpage.subtitle.present? %>
+        <span class='subtitle'><%= subpage.subtitle %></span>
+      <% end %>
     <% end %>
   <% end %>
 </div>

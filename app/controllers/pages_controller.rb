@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @home = Home.first
     raise 'Please create a homepage object first' unless @home
 
-    @event = Event.query(Date.today, nil, 3).first
+    @events = Event.query(Date.today, nil, 3)
   end
 
   def show
