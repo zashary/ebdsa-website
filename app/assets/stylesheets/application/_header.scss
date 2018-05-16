@@ -14,15 +14,50 @@
 
   .header__logo {
     margin-right: 10px;
-    height: 65px;
-    width: auto;
+    height: auto;
+    width: 274px;
   }
 
   .header__menu {
+    width: #{$max_width - 274};
     list-style: none;
+    margin: 0 0 0 60px;
+    padding: 0;
     display: flex;
-    margin: 0
+    justify-content: space-between;
   }
+  .hamburger { display: none; }
 
-  .header__menu_item { margin-left: $extra_spacing; }
+  @media (max-width: $mobile_break_point) {
+    .container {
+      padding-top: $compact_spacing;
+      padding-bottom: $compact_spacing;
+      height: auto;
+      display: block;
+    }
+
+    .header__logo { width: 200px }
+
+    .header__menu {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0;
+      width: auto;
+      li { margin: 3px 0; }
+
+      // animate entrance/exit
+      max-height: 0;
+      transition: max-height 0.5s;
+      overflow: hidden;
+      &.show { max-height: 300px; }
+    }
+
+    .hamburger { 
+      display: inline;
+      float: right;
+      font-size: 25px;
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+  }
 }

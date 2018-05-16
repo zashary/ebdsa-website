@@ -25,16 +25,20 @@
 
     <div class='header'>
       <div class='container'>
-        <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
+        <div>
+          <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
+
+          <%= link_to 'javascript:void(0);', class: 'hamburger', onclick: '$(".header__menu").toggleClass("show");' do %>
+            <i class='fa fa-bars'></i>
+          <% end %>
+        </div>
 
         <ul class='header__menu'>
           <% header_menu_items.each do |item| %>
-            <li class='header__menu_item'><%= link_to item.label, item.slug %></li>
+            <li><%= link_to item.label, item.slug %></li>
           <% end %>
           <% if admin_signed_in? %>
-            <li class='header__menu_item'>
-              <%= link_to 'Admin', admin_dashboard_path, class: 'admin__link' %>
-            </li>
+            <li><%= link_to 'Admin', current_admin_path %></li>
           <% end %>
         </ul>
       </div>
@@ -45,12 +49,14 @@
     <div class='footer'>
       <div class='container'>
         <div class='footer__menu'>
-          <p class='text-light'>Get Involved</p>
-          <p>
-            <% footer_menu_items.each do |item| %>
-              <%= link_to item.label, item.slug %><br>
-            <% end %>
-          </p>
+          <article>
+            <p class='text-light'>Get Involved</p>
+            <p>
+              <% footer_menu_items.each do |item| %>
+                <%= link_to item.label, item.slug %><br>
+              <% end %>
+            </p>
+          </article>
         </div>
         <div class='footer__info'>
           <article>

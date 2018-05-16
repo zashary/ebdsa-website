@@ -15,4 +15,7 @@
   .footer__menu { flex: 25%; }
   .footer__info { flex: 75%; }
 
+  @media (max-width: $mobile_break_point) {
+    .container { flex-direction: column; }
+  }
 }

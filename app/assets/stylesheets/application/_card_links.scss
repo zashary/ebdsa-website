@@ -29,3 +29,10 @@
   }
 
 }
+
+@media (max-width: $mobile_break_point) {
+  .card-link {
+    width: 100%;
+    &:nth-child(2n+1) { margin-right: 0; }
+  }
+}
