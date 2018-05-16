@@ -48,7 +48,7 @@ ActiveAdmin.register Page do
       f.input :subtitle, as: :string
       f.input :content, as: :trix_editor
       f.input :slug, hint: 'This is the FULL path of the page after our root domain, and it has nothing to do with parent/child pages. E.g. if you want a page to live at "eastbaydsa.org/about/mission", put "about/mission" here. At least one Page should have the slug "home".'
-      f.input :parent
+      f.input :parent, collection: Page.pluck(:slug, :id)
       f.input :listed, hint: 'Unlisted pages can still be visited by URL, but will not show up as a sub-page'
       f.input :background_image_url, as: :s3_url
     end
