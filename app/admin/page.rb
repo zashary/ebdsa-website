@@ -4,30 +4,28 @@ ActiveAdmin.register Page do
   end
 
   index do
+    column :slug do |page|
+      link_to(page.slug, page, target: '_blank')
+    end
     column :title
     column :content do |post|
       truncate(strip_tags(post.content), length: 300)
     end
     column :listed
-    column :direct_link do |page|
-      @url = url_for(page)
-      link_to(@url, @url, target: '_blank')
-    end
     actions
   end
 
-  show do
+  show title: :slug do
     attributes_table do
+      row :slug do |page|
+        link_to(page.slug, page, target: '_blank')
+      end
       row :title
       row :subtitle
       row :content do |page|
         article class: 'content' do
           page.content.html_safe
         end
-      end
-      row :direct_link do |page|
-        @url = url_for(page)
-        link_to(@url, @url, target: '_blank')
       end
       row :background_image_url do |page|
         if page.background_image_url != nil
