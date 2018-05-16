@@ -13,11 +13,43 @@
 
   <div class='simple-calendar--events'>
     <% events.each do |event| %>
-      <%= link_to event_path(event), class: 'simple-calendar--events--event' do %>
+      <%= link_to event_path(event, slug: event.slug), class: 'simple-calendar--events--event' do %>
         <span class='simple-calendar--events--event-title'><%= event.name %><span>
         <br />
         <span class='simple-calendar--events--event-time'><%= format_time_range_short event.start_time, event.end_time %></span>
       <% end %>
     <% end %>
   </div>
+<% end %>
+
+<% content_for :schema do %>
+  <script type="application/ld+json">
+    [
+      <% @events.each_with_index do |event, index| %>
+        <% if event.name && event.venue %>
+          {
+            "@context": "http://schema.org",
+            "@type": "Event",
+            "name": "<%= event.name %>",
+            "startDate": "<%= event.start_time %>",
+            "endDate": "<%= event.end_time %>",
+            "location": {
+              "@type": "Place",
+              "name": "<%= event.venue %>",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "<%= event.address['address1'] %>",
+                "addressLocality": "<%= event.address['city'] %>",
+                "postalCode": "<%= event.address['zip'] %>",
+                "addressRegion": "<%= event.address['state'] %>",
+                "addressCountry": "<%= event.address['country_code'] %>"
+              }
+            },
+            "image": "<%= event.image_url %>",
+            "description": "<%= event.description %>"
+          }<%= ', ' unless index == @events.length - 1 %>
+        <% end %>
+      <% end %>
+    ]
+  </script>
 <% end %>

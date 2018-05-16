@@ -3,7 +3,7 @@
   <% @events.each do |event| %>
     <article>
       <p>
-        <%= link_to event.name, event_path(event) %><br>
+        <%= link_to event.name, event_path(event, slug: event.slug) %><br>
         <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
       </p>
       <!--
