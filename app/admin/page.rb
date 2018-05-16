@@ -34,7 +34,7 @@ ActiveAdmin.register Page do
           image_tag(page.background_image_url, style: 'width:200px;height:auto;')
         end
       end
-      columns_to_exclude = ["title", "content", "featured_image"]
+      columns_to_exclude = ["title", "subtitle", "content", "background_image_url"]
       (Page.column_names - columns_to_exclude).each do |c|
         row c.to_sym
       end
