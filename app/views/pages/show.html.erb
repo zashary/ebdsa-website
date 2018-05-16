@@ -1,5 +1,16 @@
 <%= content_for :title, @page.title %>
 
+<% if @page.background_image_url.present? %>
+  <% content_for :before_content do %>
+    <div class='hero hero-with-image' style='background-image: url(<%= @page.background_image_url %>);'>
+      <div class='container'>
+        <%= content_tag(:h1, @page.title) %>
+        <%= content_tag(:p, @page.subtitle) if @page.subtitle.present? %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 <div class='breadcrumbs'>
   <%= link_to 'Home', root_url %> &raquo;
   <% for parent in @page.all_parents.reverse %>
@@ -7,11 +18,14 @@
   <% end %>
   <%= @page.title %>
 </div>
+
 <article>
-  <div class='hero'>
-    <%= content_tag(:h1, @page.title) %>
-    <%= content_tag(:p, @page.subtitle) if @page.subtitle.present? %>
-  </div>
+  <% if @page.background_image_url.blank? %>
+    <div class='hero'>
+      <%= content_tag(:h1, @page.title) %>
+      <%= content_tag(:p, @page.subtitle) if @page.subtitle.present? %>
+    </div>
+  <% end %>
 
   <%= @page.content.html_safe %>
 </article>

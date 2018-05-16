@@ -2,18 +2,19 @@
 #
 # Table name: pages
 #
-#  id           :integer          not null, primary key
-#  title        :text
-#  content      :text
-#  slug         :string           not null
-#  show_in_menu :boolean
-#  parent_id    :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  subtitle     :text
-#  listed       :boolean          default(TRUE)
-#  show_form    :boolean          default(FALSE), not null
-#  form_tags    :string
+#  id                   :integer          not null, primary key
+#  title                :text
+#  content              :text
+#  slug                 :string           not null
+#  show_in_menu         :boolean
+#  parent_id            :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  subtitle             :text
+#  listed               :boolean          default(TRUE)
+#  show_form            :boolean          default(FALSE), not null
+#  form_tags            :string
+#  background_image_url :string
 #
 # Indexes
 #
