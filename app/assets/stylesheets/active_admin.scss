@@ -12,6 +12,8 @@
 @import 'active_admin/base';
 @import 'activeadmin_sortable_table';
 @import 'trix';
+//@import 'activeadmin/quill_editor_input';
+@import 'activeadmin/quill_editor/quill.snow';
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -41,4 +43,31 @@ fieldset.inputs .input {
 
 trix-editor {
   background: white;
+}
+
+// Adapted from activeadmin/_quill_editor_input.sass
+// https://github.com/blocknotes/activeadmin_quill_editor/blob/master/app/assets/stylesheets/activeadmin/_quill_editor_input.sass
+body.active_admin form .quill-editor {
+  display: inline-block;
+  width: calc(80% - 22px);
+  .ql-editor {
+    background-color: #fff;
+    max-height: 300px;
+    min-height: 150px;
+    padding: 10px;
+    // reset internal elements
+    p {
+      margin-bottom: 1em;
+    }
+    ol {
+      list-style-type: decimal;
+    }
+    ul {
+      list-style-type: disc;
+    }
+    ul, ol {
+      margin: 0 1.5em 1.5em 0;
+      padding-left: 1.5em;
+    }
+  }
 }

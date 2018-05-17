@@ -57,7 +57,7 @@ ActiveAdmin.register BlogPost do
     f.object.posted_at = DateTime.now
     f.inputs do
       f.input :title, as: :string
-      f.input :content, as: :trix_editor
+      f.input :content, as: :quill_editor
       f.input :featured_image, as: :s3_url
       f.input :slug, hint: 'Blog posts live at "/blog/:slug". Will be automatically generated if blank'
       f.input :author
