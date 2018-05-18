@@ -14,7 +14,7 @@
 
 <% unless @page.home? %>
   <div class='breadcrumbs'>
-    <!-- Always put a Home at the beginning, then ignore it within all_parents
+    <!-- Always put a Home at the beginning, then ignore it within all_parents -->
     <%= link_to 'Home', root_url %> &raquo;
     <% for parent in @page.all_parents.reverse %>
       <% next if parent.home? %>
@@ -33,7 +33,7 @@
     </div>
   <% end %>
 
-  <%= @page.content.html_safe %>
+  <div class='quill-output'><%= @page.content.html_safe %></div>
 </article>
 
 <% if @page.show_form %>

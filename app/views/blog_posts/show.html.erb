@@ -1,21 +1,17 @@
 <% content_for :title, @post.title %>
 
-<div class="content__centered">
-  <div class="breadcrumbs">
-    <%= link_to "News", blog_posts_path %> &raquo; <%= @post.title %>
-  </div>
-
-  <div class='blog-post__header'>
-    <h1><%= @post.title %></h1>
-
-    <div class='blog-post__posted-at'>
-      Posted
-      <%= @post.posted_at.localtime.to_s(:long) %>
-    </div>
-  </div>
-
-
-  <article>
-    <%= @post.content.html_safe %>
-  </article>
+<div class="breadcrumbs">
+  <%= link_to "News", blog_posts_path %> &raquo; <%= @post.title %>
 </div>
+
+<div class='hero'>
+  <h1><%= @post.title %></h1>
+
+  <p class='text-light'>
+    <%= @post.posted_at.localtime.to_s(:long) %>
+  </p>
+</div>
+
+<article>
+  <div class='quill-output'><%= @post.content.html_safe %></div>
+</article>

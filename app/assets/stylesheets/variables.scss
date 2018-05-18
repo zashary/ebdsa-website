@@ -15,13 +15,16 @@ $small_font_size: 14px;
 $default_font_size: 18px;
 $h1_font_size: 42px;
 $h2_font_size: 32px;
+$h3_font_size: 24px;
 
 // Layout
 $max_width: 700px;
 $mobile_break_point: 500px;
 
 
-// TODO
+$text_indent: 30px;
+
+// Old variables before visual redesign:
 $dsa_dark_red: #ea2127;
 $dsa_dark_purple: #3b2462;
 $dsa_blue: #009aaf;
@@ -31,8 +34,9 @@ $dsa_white: #ffffff;
 $dsa_grey: #353b40;
 $mid_grey_background: #bbb;
 $grey_background: #e3e3e3;
-$border_color: $grey_background;
-$large_font_size: 24px;
-$heading_font_size: 32px;
-$hero_font_size: 50px;
-$sm_max_width: 820px;
+$border_color: #e3e3e3;
+
+//$large_font_size: 24px;
+//$heading_font_size: 32px;
+//$hero_font_size: 50px;
+//$sm_max_width: 820px;
