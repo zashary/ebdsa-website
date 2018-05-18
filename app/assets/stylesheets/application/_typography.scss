@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, article {
   font-weight: normal;
 }
 
-p { margin-bottom: $compact_spacing; }
+p, h3, h4, h5, h6 { margin-bottom: $compact_spacing; }
 
 h1 { font-size: $h1_font_size; }
 h2 { font-size: $h2_font_size; }
