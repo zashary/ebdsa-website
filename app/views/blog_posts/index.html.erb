@@ -1,36 +1,43 @@
 <% content_for :title, 'News' %>
 
-<div id="news" class="content__centered">
+<div class='hero'>
   <h1>News</h1>
-  <% if params[:page].to_i > 1 %>
-    <div class='digg_pagination'>
-      <%= will_paginate @posts %>
-    </div>
-    <br>
-  <% end %>
-  <% @posts.each do |post| %>
-    <article class='blog-post__snippet'>
-        <div class='blog-post__header-snippet'>
-          <h2><%= link_to post.title, blog_post_path(
-            year: post.posted_at.year,
-            month: post.posted_at.month,
-            day: post.posted_at.day,
-            slug: post.slug
-          ) %></h2>
-        </div>
-        <p>
-        <%= truncate(strip_tags(post.content), length: 600) %>
-        <%= link_to '(Read more)', blog_post_path(
+</div>
+
+<% if params[:page].to_i > 1 %>
+  <div class='digg_pagination'>
+    <%= will_paginate @posts %>
+  </div>
+  <br>
+<% end %>
+
+<% @posts.each do |post| %>
+  <article class='blog-post__snippet'>
+    <h2>
+      <%= link_to post.title, blog_post_path(
           year: post.posted_at.year,
           month: post.posted_at.month,
           day: post.posted_at.day,
           slug: post.slug
-          ) %>
-        </p>
-    </article>
-    <br>
-  <% end %>
-  <div class='digg_pagination'>
-    <%= will_paginate @posts %>
-  </div>
+      ) %>
+    </h2>
+    <p>
+
+      <span class='text-light'>
+        <%= post.posted_at.localtime.to_date.to_s(:long) %> -
+      </span>
+      <%= truncate(strip_tags(post.content), length: 300) %>
+      <%= link_to '(Read&nbsp;more)'.html_safe, blog_post_path(
+        year: post.posted_at.year,
+        month: post.posted_at.month,
+        day: post.posted_at.day,
+        slug: post.slug
+        ) %>
+    </p>
+  </article>
+  <br>
+<% end %>
+
+<div class='digg_pagination'>
+  <%= will_paginate @posts %>
 </div>

@@ -1,32 +1,42 @@
 // Colors
-$dsa_red: #ea2127;
+$dsa_red: #ED2C24;
+$dsa_purple: #3B2462;
+$dark_grey_bg: #353B40;
+$text_color: #444;
+$light_text_color: #888;
+
+// Layout
+$default_spacing: 20px;
+$extra_spacing: 30px;
+$compact_spacing: 10px;
+
+// Sizes
+$small_font_size: 14px;
+$default_font_size: 18px;
+$h1_font_size: 42px;
+$h2_font_size: 32px;
+$h3_font_size: 24px;
+
+// Layout
+$max_width: 700px;
+$mobile_break_point: 500px;
+
+
+$text_indent: 30px;
+
+// Old variables before visual redesign:
 $dsa_dark_red: #ea2127;
-$dsa_purple: #800080;
 $dsa_dark_purple: #3b2462;
 $dsa_blue: #009aaf;
 $dsa_light_blue: #b5dbdc;
 $dsa_black: #272822;
 $dsa_white: #ffffff;
 $dsa_grey: #353b40;
-$text_color: #515151;
-$light_text_color: #888;
 $mid_grey_background: #bbb;
 $grey_background: #e3e3e3;
-$border_color: $grey_background;
+$border_color: #e3e3e3;
 
-// Layout
-$default_spacing: 30px;
-$compact_spacing: 10px;
-
-// Sizes
-$small_font_size: 12px;
-$default_font_size: 18px;
-$large_font_size: 24px;
-$heading_font_size: 32px;
-$large_heading_font_size: 42px;
-$hero_font_size: 50px;
-
-$sm_max_width: 820px;
-$max_width: 1100px;
-
-$text_indent: 30px;
+//$large_font_size: 24px;
+//$heading_font_size: 32px;
+//$hero_font_size: 50px;
+//$sm_max_width: 820px;

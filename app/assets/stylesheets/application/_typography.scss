@@ -1,10 +1,22 @@
 @import 'variables';
 
-article,
-p {
-  line-height: 1.75;
+h1, h2, h3, h4, h5, h6, p, ul, ol, article {
+  margin-top: 0;
   margin-bottom: $default_spacing;
+  line-height: 1.5;
+  font-weight: normal;
 }
+
+p { margin-bottom: $compact_spacing; }
+
+h1 { font-size: $h1_font_size; }
+h2 { font-size: $h2_font_size; }
+h3 { font-size: $h3_font_size; }
+h4 { font-size: $default_font_size; }
+h5 { font-size: $default_font_size; }
+h6 { font-size: $default_font_size; }
+
+a { color: $dsa_red; }
 
 article {
   li {
@@ -16,21 +28,7 @@ article {
 
 .trix-output {
   line-height: 1.4em;
-  //trix outputs divs instead of <p> tags,
-  //we can style them with something like this:
-  div {
-  }
 }
 
-h1 {
-  font-size: $large_heading_font_size;
-  margin-bottom: $default_spacing;
-}
-
-.hero {
-  margin-top: $default_spacing;
-
-  h1 {
-    font-size: $hero_font_size;
-  }
-}
+.text-center { text-align: center; }
+.text-light { color: $light_text_color; }

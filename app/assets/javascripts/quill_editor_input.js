@@ -33,7 +33,7 @@ window.onload = function() {
       toolbar: {
         container: [
           ['bold', 'italic', 'strike'],
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'header': [1, 2, 3, false] }],
           ['blockquote'],
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
           [{ 'script': 'sub'}, { 'script': 'super' }],

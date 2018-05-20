@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505162134) do
+ActiveRecord::Schema.define(version: 20180516184248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,15 +58,6 @@ ActiveRecord::Schema.define(version: 20180505162134) do
     t.index ["slug"], name: "index_blog_posts_on_slug", unique: true
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.text "intro"
-    t.integer "featured_page_1_id"
-    t.integer "featured_page_2_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "featured_image"
-  end
-
   create_table "menu_items", force: :cascade do |t|
     t.string "label"
     t.string "slug"
@@ -88,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180505162134) do
     t.boolean "listed", default: true
     t.boolean "show_form", default: false, null: false
     t.string "form_tags"
+    t.string "background_image_url"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 

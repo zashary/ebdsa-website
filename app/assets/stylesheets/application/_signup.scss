@@ -7,23 +7,9 @@
 
 .signup__email {
   width: 100%;
-  padding: 8px 12px;
-  font-size: $large_font_size;
   margin-right: $compact_spacing;
 }
 
-.signup__button {
-  border: none;
-  background: $dsa_red;
-  color: $dsa_white;
-  font-size: $large_font_size;
-  padding: 0 20px;
-  height: 48px;
-
-  &:hover {
-    background: $dsa_purple;
-  }
-}
 
 @media (max-width: 600px) {
   .signup { display: block; }

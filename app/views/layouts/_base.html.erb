@@ -25,66 +25,64 @@
 
   <body>
 
-    <% if admin_signed_in? %>
-      <section class='admin'>
-        <div class='container'>
-          <div class='admin__menu'>
-            <%= link_to 'Admin Dashboard →', admin_dashboard_path, class: 'admin__link' %>
-            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>
-          </div>
-        </div>
-      </section>
-    <% end %>
-
     <div class='header'>
-      <div class='container header__container '>
-        <%= link_to(image_tag('dsa-logo-with-text.svg', class: 'header__logo'), root_path) %>
+      <div class='container'>
+        <div>
+          <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
+
+          <%= link_to 'javascript:void(0);', class: 'hamburger', onclick: '$(".header__menu").toggleClass("show");' do %>
+            <i class='fa fa-bars'></i>
+          <% end %>
+        </div>
 
         <ul class='header__menu'>
           <% header_menu_items.each do |item| %>
-            <li class='header__menu_item'><%= link_to item.label, item.slug %></li>
+            <li><%= link_to item.label, item.slug %></li>
+          <% end %>
+          <% if admin_signed_in? %>
+            <li><%= link_to 'Admin', current_admin_path %></li>
           <% end %>
         </ul>
-
-        <div class='header__links'>
-           <div class='header__link'><%= link_to '', 'https://www.facebook.com/eastbaydsa/', class:'fa fa-facebook' %></div>
-           <div class='header__link'><%= link_to '', 'https://twitter.com/dsaeastbay', class:'fa fa-twitter' %></div>
-        </div>
       </div>
     </div>
 
     <%= yield %>
 
     <div class='footer'>
-      <div class='container footer__nav'>
-        <div>
-          <h3>Get Involved</h3>
-          <ul class='footer__nav_list'>
-            <% footer_menu_items.each do |item| %>
-              <li><%= link_to item.label, item.slug %></li>
-            <% end %>
-          </ul>
+      <div class='container'>
+        <div class='footer__menu'>
+          <article>
+            <p class='text-light'>Get Involved</p>
+            <p>
+              <% footer_menu_items.each do |item| %>
+                <%= link_to item.label, item.slug %><br>
+              <% end %>
+            </p>
+          </article>
         </div>
-        <div>
-          <h3>About Us</h3>
-          <div class='footer__content'>
-            The East Bay Democratic Socialists of<br>
-            America (DSA) are democratically<br>
-            building a progressive movement for<br>
-            social change in local communities<br>
-            and politics.
-          </div>
+        <div class='footer__info'>
+          <article>
+            <p class='text-light'>About Us</p>
+            <p>
+              The East Bay Democratic Socialists of
+              America (DSA) are democratically
+              building a progressive movement for
+              social change in local communities
+              and politics.
+            </p>
+          </article>
+
+          <article>
+            <p class='text-light'>Follow Us</p>
+            <p>
+              <%= link_to 'Facebook', 'https://www.facebook.com/eastbaydsa/' %><br>
+              <%= link_to 'Twitter', 'https://twitter.com/dsaeastbay' %>
+            </p>
+          </article>
+
+          <p class='text-light'> © 2017 East Bay DSA. All Rights Reserved </p>
+
         </div>
-        <div>
-          <h3>Follow Us</h3>
-          <div class='footer__links'>
-            <div class='footer__link'><%= link_to '', 'https://www.facebook.com/eastbaydsa/', class:'fa fa-facebook' %></div>
-            <div class='footer__link'><%= link_to '', 'https://twitter.com/dsaeastbay', class:'fa fa-twitter' %></div>
-          </div>
-        </div>
-      </div>
-      <div class='container footer__copyright'>
-        © 2017 East Bay DSA. All Rights Reserved
       </div>
     </div>
   </body>
