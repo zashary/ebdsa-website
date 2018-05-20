@@ -71,7 +71,7 @@ window.onload = function() {
 function editor__imageHandler(value) {
   if (!value) return;
 
-  let fileInput = this.container.querySelector('input.ql-image[type=file]');
+  var fileInput = this.container.querySelector('input.ql-image[type=file]');
   if (fileInput == null) {
     var quill = this.quill;
     fileInput = document.createElement('input');
