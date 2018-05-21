@@ -5,6 +5,11 @@ $dark_grey_bg: #353b40;
 $text_color: #444;
 $light_text_color: #888;
 
+// Layout
+$default_spacing: 20px;
+$extra_spacing: 30px;
+$compact_spacing: 10px;
+
 // Sizes
 $small_font_size: 14px;
 $default_font_size: 18px;
@@ -13,13 +18,10 @@ $h2_font_size: 32px;
 $h3_font_size: 24px;
 
 // Layout
-$max_width: 750px;
+$max_width: 700px;
 $mobile_break_point: 500px;
-$default_spacing: 20px;
-$extra_spacing: 30px;
-$compact_spacing: 10px;
-$text_indent: 30px;
 
+$text_indent: 30px;
 
 // Old variables before visual redesign:
 $dsa_dark_red: #ea2127;
