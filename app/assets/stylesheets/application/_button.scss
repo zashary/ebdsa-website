@@ -7,27 +7,5 @@
 }
 
 .button {
-  display: inline-block;
-  background: $dsa_white;
-  border: 1px solid $dsa_red;
-  padding: 11.5px 20px 11.5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: $default_font_size;
-  height: 50px;
-  transition: all .4s cubic-bezier(.25,.8,.25,1);
-  box-shadow: 0 2px 4px rgba(0,0,0,.25);
-  &:hover { box-shadow: 0 5px 10px rgba(0,0,0,.25) }
-  &:active { box-shadow: 0 3px 6px rgba(0,0,0,.25) }
-}
-
-.button.button-primary {
-  color: #fff;
-  background: $dsa_red;
-  border: none;
-}
-
-.button.button-lg {
-  font-size: $h3_font_size;
-  padding: 8px 20px;
+  @include button;
 }
