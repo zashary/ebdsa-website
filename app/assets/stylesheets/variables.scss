@@ -1,7 +1,7 @@
 // Colors
-$dsa_red: #ED2C24;
-$dsa_purple: #3B2462;
-$dark_grey_bg: #353B40;
+$dsa_red: #ed2c24;
+$dsa_purple: #3b2462;
+$dark_grey_bg: #353b40;
 $text_color: #444;
 $light_text_color: #888;
 
@@ -21,7 +21,6 @@ $h3_font_size: 24px;
 $max_width: 700px;
 $mobile_break_point: 500px;
 
-
 $text_indent: 30px;
 
 // Old variables before visual redesign:
@@ -36,7 +35,41 @@ $mid_grey_background: #bbb;
 $grey_background: #e3e3e3;
 $border_color: #e3e3e3;
 
-//$large_font_size: 24px;
-//$heading_font_size: 32px;
-//$hero_font_size: 50px;
-//$sm_max_width: 820px;
+@mixin button {
+  display: inline-block;
+  background: $dsa_white;
+  border: 1px solid $dsa_red;
+  padding: 11.5px 20px 11.5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: $default_font_size;
+  height: 50px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  &:hover {
+    text-decoration: underline;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  }
+  &:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  &.button-primary {
+    color: #fff;
+    background: $dsa_red;
+    border: none;
+  }
+
+  &.button-lg {
+    font-size: $h3_font_size;
+    padding: 8px 20px;
+  }
+}
+
+@mixin button-primary {
+  @include button;
+
+  color: #fff;
+  background: $dsa_red;
+  border: none;
+}
