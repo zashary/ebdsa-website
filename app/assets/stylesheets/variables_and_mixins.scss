@@ -6,9 +6,12 @@ $text_color: #444;
 $light_text_color: #888;
 
 // Layout
+$max_width: 750px;
+$mobile_break_point: 500px;
 $default_spacing: 20px;
 $extra_spacing: 30px;
 $compact_spacing: 10px;
+$text_indent: 30px;
 
 // Sizes
 $small_font_size: 14px;
@@ -16,12 +19,6 @@ $default_font_size: 18px;
 $h1_font_size: 42px;
 $h2_font_size: 32px;
 $h3_font_size: 24px;
-
-// Layout
-$max_width: 700px;
-$mobile_break_point: 500px;
-
-$text_indent: 30px;
 
 // Old variables before visual redesign:
 $dsa_dark_red: #ea2127;
