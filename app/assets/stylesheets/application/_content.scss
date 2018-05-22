@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'variables_and_mixins';
 
 .content {
   padding: $extra_spacing 0 50px;
@@ -9,11 +9,6 @@
  */
 .content a[data-trix-attachment] {
   text-align: center;
-}
-
-.content__centered {
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 article {
