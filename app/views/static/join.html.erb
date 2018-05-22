@@ -1,0 +1,49 @@
+<div class='hero'>
+  <h1>Join East Bay DSA</h1>
+</div>
+
+<article>
+  <h3>Just curious? Attend an event!</h3>
+  <p>
+    Want to learn more about East Bay DSA? Attend one of our many events in the area to find out how you can get involved in improving the lives of working people.
+  </p>
+  <p>
+    <%= link_to 'Find an event', events_path, class: 'button button-primary' %>
+  </p>
+</article>
+<br>
+
+<article>
+  <h3>Subscribe to our Newsletter</h3>
+  <p>
+    Stay up-to-date on local upcoming events and actions!
+  </p>
+
+  <%= form_tag signup_path do %>
+    <%if @state == 'error' %>
+      <div class='signup__error'>Error: E-mail cannot be blank!</div>
+    <% end %>
+    <div class='signup'>
+      <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+      <%= hidden_field_tag 'tags', 'eb_supporter' %>
+      <%= submit_tag 'Submit', class: 'button button-primary' %>
+    </div>
+  <% end %>
+</article>
+<br>
+
+<article>
+  <h3>Become an official member</h3>
+  <p>
+    If you want to vote at meetings, you'll need to officially join National DSA on their website and pay dues.
+    All dues-paying members of National DSA living in the East Bay are automatically members of East Bay DSA.
+  </p>
+  <p>
+    <%= link_to 'Join National DSA', 'https://dsausa.nationbuilder.com/join', class: 'button button-primary' %>
+  </p>
+
+  <p>
+    If you're already a member and just need to renew your membership,
+    <%= link_to 'click here.', 'http://renew.eastbaydsa.org/' %>
+  </p>
+</article>
