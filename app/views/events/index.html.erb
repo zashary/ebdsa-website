@@ -1,12 +1,13 @@
 <div class='container'>
-  <h1>East Bay DSA events</h1>
+  <div class="hero">
+    <h1>Events</h1>
 
-  <p>
-    Want to learn more about East Bay DSA? Attend one of our many events in
-    the area to find out how you can get involved in improving the lives
-    of working people.
-  </p>
-
+    <p>
+      Want to learn more about East Bay DSA? Attend one of our many events in
+      the area to find out how you can get involved in improving the lives
+      of working people.
+    </p>
+  </div>
 
   <div class='visible-mobile'>
     <h2 class='calendar-heading'>
@@ -20,7 +21,7 @@
     </h2>
 
     <!-- Mobile should only display upcoming_events if it's set, otherwise all events -->
-    <% (@upcoming_events || @events).each do |event| %>
+    <% @upcoming_events.each do |event| %>
       <article>
         <p>
           <%= link_to event.name, event_path(event, slug: event.slug) %><br>
@@ -28,7 +29,7 @@
         </p>
       </article>
     <% end %>
-    <% if (@upcoming_events || @events).blank? %>
+    <% if @upcoming_events.blank? %>
       <em>
         No
         <%= @start_date.beginning_of_month >= Date.today.beginning_of_month ? 'upcoming' : '' %>
@@ -40,11 +41,7 @@
 
 </div>
 
-
-
-
-<div class='hidden-mobile'>
-  <br>
+<div class='container container-full-width hidden-mobile'>
   <%= month_calendar events: @events do |date, events| %>
     <span class='simple-calendar--date-wrapper'>
       <span class='simple-calendar--date'>
