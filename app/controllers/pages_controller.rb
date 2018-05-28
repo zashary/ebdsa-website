@@ -5,11 +5,7 @@ class PagesController < ApplicationController
     @page = Page.where(slug: 'home').first
     @page ||= Page.first
 
-    @events = Event.query(
-      start_date: Date.today,
-      end_date: nil,
-      limit: 3
-    )
+    @events = Event.query(limit: 3)
     render :show
   end
 

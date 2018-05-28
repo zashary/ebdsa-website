@@ -11,13 +11,18 @@
 
   <form id='calendar-filter'>
     <p>
-      <strong>Filter calendar:</strong>
-      <%= select_tag 'tags', options_for_select([
-        ['All events', ''],
-        ['Meetings', 'meeting'],
-        ['Canvasses', 'canvass'],
-        ['Phone Bank', 'phonebank']
-      ]) %>
+      <label>
+        <%= check_box_tag :meeting, 1, true %>
+        Meetings
+      </label>
+      <label>
+        <%= check_box_tag :canvass, 1, true %>
+        Canvasses
+      </label>
+      <label>
+        <%= check_box_tag :phonebank, 1, true %>
+        Phone Banks
+      </label>
     </p>
   </form>
 
