@@ -1,5 +1,5 @@
   class Event
-  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address, :image_url
+  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address, :image_url, :tags
 
   def initialize api_response
     self.id = api_response['id']
@@ -10,6 +10,7 @@
     self.venue = api_response['venue']['name']
     self.address = api_response['venue']['address'] || {}
     self.image_url = api_response['meta_image_url'] # FIXME: image URL not returned!
+    self.tags = api_response['tags']
   end
 
   def to_param; id; end
