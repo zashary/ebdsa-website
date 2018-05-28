@@ -9,22 +9,17 @@
     </p>
   </div>
 
-  <form id='calendar-filter'>
+  <%= form_tag events_path, id: 'calendar-filter', method: :get do %>
+    <%= hidden_field_tag :start_date, params[:start_date] %>
     <p>
-      <label>
-        <%= check_box_tag :meeting, 1, true %>
-        Meetings
-      </label>
-      <label>
-        <%= check_box_tag :canvass, 1, true %>
-        Canvasses
-      </label>
-      <label>
-        <%= check_box_tag :phonebank, 1, true %>
-        Phone Banks
-      </label>
+      <% Event::TAGS.each do |tag, human_readable| %>
+        <label>
+          <%= check_box_tag 'tags[]', tag, @tags.include?(tag) || @tags.blank? %>
+          <%= human_readable %>
+        </label>
+      <% end %>
     </p>
-  </form>
+  <% end %>
 
   <h2 class='calendar-heading'>
     <%= link_to events_path(start_date: @start_date-1.month, tags: params[:tags]) do %>
