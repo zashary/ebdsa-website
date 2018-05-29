@@ -2,12 +2,10 @@ class EventsController < ApplicationController
   before_action :require_nationbuilder_slug
 
   def index
-    @start_date = if params[:start_date]
-      Date.parse(params[:start_date])
-    else
-      Date.today.beginning_of_month
-    end
-
+    @start_date = Date.parse(params[:start_date]) rescue nil
+    @start_date ||= Date.today.beginning_of_month
+    params[:start_date] = @start_date.to_s # simple_calendar gem reads from params
+    
     end_date = @start_date.end_of_month
     # When blank, returns all events
     @tags = params[:tags] || []
