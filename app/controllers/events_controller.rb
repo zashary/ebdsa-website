@@ -9,8 +9,14 @@ class EventsController < ApplicationController
     end
 
     end_date = @start_date.end_of_month
+    # When blank, returns all events
+    @tags = params[:tags] || []
 
-    @events = Event.query((@start_date - 7.days).to_s, (end_date + 7.days).to_s)
+    @events = Event.query(
+      start_date: (@start_date - 7.days).to_s,
+      end_date: (end_date + 7.days).to_s,
+      tags: @tags
+    )
 
 
     @upcoming_events = @events.select{|e|
