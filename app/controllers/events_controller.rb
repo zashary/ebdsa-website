@@ -19,8 +19,7 @@ class EventsController < ApplicationController
 
     @upcoming_events = @events.select{|e|
       e.start_time > @start_date.to_time.beginning_of_day &&
-      e.end_time < end_date.end_of_day &&
-      (@start_date == Date.today.beginning_of_month ? e.start_time.future? : true)
+      e.end_time < end_date.end_of_day
     }
 
     render layout: 'full_width'
