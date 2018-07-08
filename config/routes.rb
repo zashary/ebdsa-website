@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'r', to: 'application#handle_redirect'
   get 'unsubscribe', to: 'application#handle_unsubscribe'
 
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_error'
+
   get '*slug', to: 'pages#show', as: 'page'
   root to: "pages#home"
 end
