@@ -6,7 +6,8 @@ class PagesController < ApplicationController
     @page ||= Page.first
 
     @events = Event.query(limit: 3)
-    render :show
+    @posts = BlogPost.homepage.limit(3)
+    render layout: 'full_width'
   end
 
   def show

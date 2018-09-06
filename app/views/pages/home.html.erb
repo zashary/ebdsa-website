@@ -1,0 +1,81 @@
+<%= content_for :title, @page.meta_title.present? ? @page.meta_title : @page.title %>
+<%= content_for :description, @page.meta_desc %>
+
+<div id='home-hero' class='hero hero-with-image' style='background-image: url(<%= @page.background_image_url %>);'>
+  <div class='home-container home-columns container container-full-width'>
+    <div id='home-hero-content'>
+      <h1>
+        We are the East Bay chapter of <strong>Democratic Socialists of America</strong>
+      </h1>
+      <p>
+        Democratic Socialists of America (DSA) is the country's largest socialist organization,
+        and East Bay DSA is the fifth-largest chapter in the US. We are building progressive
+        movements for social change in Oakland, Berkeley, and throughout the East Bay while
+        establishing an openly democratic socialist presence in American politics.
+      </p>
+      <div>
+        <%= link_to 'Join DSA', 'https://dsausa.nationbuilder.com/join', class: 'button button-secondary' %>
+        <%= link_to 'Attend an event', '/events', class: 'button button-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='home-cta'>
+  <div class='home-container home-columns container container-full-width'>
+    <div id="home-newsletter">
+      <div>
+        <h3>Read the newsletter</h3>
+        <p>Stay up to date with our work!</p>
+      </div>
+
+      <% person_params = params[:person] || {} %>
+      <%= form_tag signup_path do %>
+        <%if @state == 'error' %>
+          <div class='signup__error'>Error: E-mail cannot be blank!</div>
+        <% end %>
+        <div class='signup'>
+          <%= email_field_tag 'person[email]', person_params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+          <%= hidden_field_tag 'tags', 'eb_supporter' %>
+          <%= submit_tag 'Submit', class: 'button button-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class='home-container home-content container container-full-width'>
+  <h1>Our campaigns</h1>
+
+  <div id="campaigns">
+    <a href='/campaigns/electoral' id="campaign-jovanka" class="campaign">
+      <span class="campaign-content">
+        <h3>Elect Jovanka Beckles for State Assembly</h3>
+        <p>
+          Jovanka Beckles is an East Bay DSA member running for CA Assembly District 15, which runs from North Oakland to Richmond. Join our work to elect a democratic socialist who will fight for people, not for profit!
+        </p>
+
+        <u>Read&nbsp;more →</u>
+      </span>
+    </a>
+    <a href='/campaigns' id="campaign-housing" class="campaign">
+      <span class="campaign-content">
+        <h3>Yes on Proposition 10</h3>
+        <p>
+          Prop 10 will allow cities and the state to pass strong, universal rent control. Help us build the movement for rent control and social housing for all!
+        </p>
+
+        <u>Read&nbsp;more →</u>
+      </span>
+    </a>
+  </div>
+
+  <div id='home-news'>
+    <%= render 'featured_posts' %>
+  </div>
+
+  <div id='home-events'>
+    <%= render 'upcoming_events' %>
+  </div>
+</div>
+<%= render partial: 'schema' %>

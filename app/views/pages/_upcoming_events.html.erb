@@ -1,24 +1,31 @@
 <% if @events.present? %>
   <h1>Upcoming events</h1>
-  <% @events.each do |event| %>
-    <article>
-      <p>
-        <%= link_to event.name, event_path(event, slug: event.slug) %><br>
-        <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
-      </p>
-      <!--
+
+  <div id='homepage-events'>
+    <% @events.each do |event| %>
+      <article class='homepage-event'>
+        <%= link_to event_path(event, slug: event.slug) do %>
+          <h3>
+            <%= event.name %>
+          </h3>
+          <p>
+            <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
+          </p>
+
+          <p>
             <%= event.venue %>
             <% if event.address['city'] and event.address['state'] %>
               in
               <%= event.address['city'] %>,
               <%= event.address['state'] %>
             <% end %>
-      -->
-    </article>
+          </p>
+        <% end %>
+      </article>
+    <% end %>
+  </div>
+
+  <%= link_to events_path, class: 'button button-primary' do %>
+    See more on our calendar &#8594;
   <% end %>
-
-  <p>
-    <%= link_to 'More upcoming events', events_path, class: 'button button-primary' %>
-  </p>
 <% end %>
-

@@ -1,0 +1,215 @@
+@import 'variables_and_mixins';
+
+.home-container {
+  width: 95%;
+  max-width: 1200px;
+  padding: 0;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  @media (min-width: 600px) {
+    width: 80%;
+  }
+}
+
+#home-hero {
+  position: relative;
+  background-color: $dsa_red;
+  color: $text-color;
+  text-shadow: none;
+  margin-top: -30px;
+  padding-bottom: 0;
+}
+
+#home-hero-content {
+  @media (max-width: 600px) {
+    padding: 18px;
+    padding: $default-spacing;
+
+    h1 {
+      font-size: 26px;
+    }
+  }
+
+  p {
+    margin-bottom: $default-spacing;
+  }
+
+  background: white;
+  max-width: 550px;
+  padding: $default_spacing * 2;
+  border-top: $dsa_red solid 25px;
+  font-size: 20px;
+  margin-bottom: -30px;
+
+  h1 {
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: $default_spacing * 1.5;
+    strong {
+      color: $dsa_red;
+      font-weight: bold;
+    }
+  }
+}
+
+#home-cta {
+  color: white;
+  background: $dsa_red;
+  padding-top: $default-spacing * 2.5;
+  margin-bottom: $default-spacing * 2;
+  padding-bottom: 30px;
+  font-size: 18px;
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1110px) {
+    #home-newsletter {
+      display: flex;
+      align-items: center;
+      flex: auto;
+
+      form {
+        margin-left: $default-spacing * 2;
+      }
+    }
+  }
+}
+
+#campaigns {
+  color: white;
+  margin-bottom: $default-spacing;
+
+  @media (min-width: 860px) {
+    display: flex;
+  }
+
+  .campaign {
+    background-size: cover;
+    text-shadow: 1px 0 0 black;
+    text-decoration: none;
+    padding-top: 300px;
+    flex: 1;
+    display: flex;
+    margin-left: -6%;
+    margin-right: -6%;
+    margin-bottom: $default-spacing;
+
+    &:hover {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+
+    @media (min-width: 860px) {
+      margin: 0 0 $default-spacing 0;
+    }
+
+  }
+
+  a {
+    color: white;
+  }
+
+  .campaign-content {
+    background: rgba(0,0,0,0.5);
+    padding: $default-spacing;
+  }
+
+  #campaign-jovanka {
+    background-image: image-url('campaign-jovanka.jpg');
+  }
+
+  #campaign-housing {
+    background-image: image-url('campaign-housing.jpg');
+    @media (min-width: 860px) {
+      margin-left: 10px;
+    }
+  }
+}
+
+.home-content {
+  h1 {
+    color: $dsa_purple;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: $default-spacing;
+    margin-bottom: $default-spacing * 1.5;
+  }
+}
+
+.home-columns {
+  display: flex;
+
+  > div {
+    flex: 1;
+  }
+}
+
+#home-news {
+  margin-bottom: 30px;
+
+  @media (min-width: 960px) {
+    #homepage-posts {
+      display: flex;
+    }
+
+    .homepage-post {
+      margin-right: 40px;
+    }
+  }
+
+  .homepage-post {
+    flex: 1;
+    border-left: 10px solid  $dsa_red;
+    padding-left: 25px;
+  }
+
+  strong a {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#home-events {
+  @media (min-width: 960px) {
+    #homepage-events {
+      display: flex;
+    }
+
+    .homepage-event {
+      margin-right: 40px;
+    }
+  }
+
+  .homepage-event {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      flex: 1;
+      background: $dsa_red;
+      color: white;
+      display: block;
+      padding: 25px;
+      text-decoration: none;
+      transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      &:hover {
+        background: $dsa_purple;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        text-decoration: underline;
+      }
+    }
+  }
+}
