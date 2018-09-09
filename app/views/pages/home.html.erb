@@ -1,7 +1,7 @@
 <%= content_for :title, @page.meta_title.present? ? @page.meta_title : @page.title %>
 <%= content_for :description, @page.meta_desc %>
 
-<div id='home-hero' class='hero hero-with-image' style='background-image: url(<%= @page.background_image_url %>);'>
+<div id='home-hero' class='hero hero-home' style='background-image: url(<%= @page.background_image_url %>);'>
   <div class='home-container home-columns container container-full-width'>
     <div id='home-hero-content'>
       <h1>
