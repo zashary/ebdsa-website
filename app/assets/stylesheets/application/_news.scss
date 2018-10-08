@@ -1,0 +1,32 @@
+@import 'variables_and_mixins';
+
+.news-list-item {
+
+}
+
+.news-list-item__content {
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: $tablet_break_point) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+
+    img {
+      width: auto;
+      max-width: 300px;
+      height: auto;
+      margin-left: 20px;
+    }
+  }
+}
+
+.news-featured-image {
+  width: 100%;
+  display: block;
+  height: 350px;
+  background-size: cover;
+  margin-bottom: 30px;
+}

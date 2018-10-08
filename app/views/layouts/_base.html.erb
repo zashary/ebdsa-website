@@ -9,6 +9,10 @@
     <% if yield(:description).present? %>
       <meta name="description" content="<%= yield(:description) %>">
     <% end %>
+    <% if yield(:meta).present? %>
+      <%= yield(:meta) %>
+    <% end %>
+
 
     <% if ENV['GOOGLE_ANALYTICS_ID'] %>
       <!-- Global Site Tag (gtag.js) - Google Analytics -->

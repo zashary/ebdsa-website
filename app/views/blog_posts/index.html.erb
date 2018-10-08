@@ -12,7 +12,7 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <article class='blog-post__snippet'>
+  <article class='news-list-item'>
     <h2>
       <%= link_to post.title, blog_post_path(
           year: post.posted_at.year,
@@ -21,20 +21,22 @@
           slug: post.slug
       ) %>
     </h2>
-    <p>
-
-      <p class='text-light'>
-        <%= post.posted_at.localtime.to_date.to_s(:long) %>
-      </p>
-      <%= truncate(strip_tags(post.content), length: 300) %>
-      <br>
-      <%= link_to 'Read&nbsp;more →'.html_safe, blog_post_path(
-        year: post.posted_at.year,
-        month: post.posted_at.month.to_s.rjust(2, '0'),
-        day: post.posted_at.day.to_s.rjust(2, '0'),
-        slug: post.slug
-        ) %>
-    </p>
+    <div class='news-list-item__content'>
+      <%= image_tag(post.featured_image) %>
+      <div>
+        <p class='text-light'>
+          <%= post.posted_at.localtime.to_date.to_s(:long) %>
+        </p>
+        <%= truncate(strip_tags(post.content), length: 300) %>
+        <br>
+        <%= link_to 'Read&nbsp;more →'.html_safe, blog_post_path(
+          year: post.posted_at.year,
+          month: post.posted_at.month.to_s.rjust(2, '0'),
+          day: post.posted_at.day.to_s.rjust(2, '0'),
+          slug: post.slug
+          ) %>
+      </div>
+    </div>
   </article>
   <br>
 <% end %>

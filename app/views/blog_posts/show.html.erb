@@ -1,5 +1,11 @@
 <%= content_for :title, @post.meta_title.present? ? @post.meta_title : @post.title %>
 <%= content_for :description, @post.meta_desc %>
+<%= content_for :meta do %>
+  <meta property="og:type" content="article" />
+  <% if @post.featured_image %>
+    <meta property="og:image" content="<%= @post.featured_image %>" />
+  <% end %>
+<% end %>
 
 <div class="breadcrumbs">
   <%= link_to "News", blog_posts_path %> &raquo; <%= @post.title %>
@@ -12,6 +18,11 @@
     <%= @post.posted_at.localtime.to_s(:long) %>
   </p>
 </div>
+
+<% if @post.featured_image %>
+  <div class="news-featured-image" style="background-image: url(<%= @post.featured_image %>);">
+  </div>
+<% end %>
 
 <article>
   <div class='quill-output'><%= @post.content.html_safe %></div>
