@@ -22,7 +22,7 @@
       ) %>
     </h2>
     <div class='news-list-item__content'>
-      <%= image_tag(post.featured_image) %>
+      <%= image_tag(post.featured_image) unless post.featured_image.blank? %>
       <div>
         <p class='text-light'>
           <%= post.posted_at.localtime.to_date.to_s(:long) %>
