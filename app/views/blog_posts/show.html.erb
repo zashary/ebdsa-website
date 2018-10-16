@@ -20,8 +20,7 @@
 </div>
 
 <% unless @post.featured_image.blank? %>
-  <div class="news-featured-image" style="background-image: url(<%= @post.featured_image %>);">
-  </div>
+  <img class="news-featured-image" src="<%= @post.featured_image %>" />
 <% end %>
 
 <article>
