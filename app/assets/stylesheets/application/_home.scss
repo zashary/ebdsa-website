@@ -133,6 +133,17 @@
   }
 }
 
+.campaigns-addendum {
+  background: $dsa_purple;
+  padding: $default-spacing * 2 $default-spacing;
+  color: white;
+  font-size: 24px;
+
+  a {
+    color: white;
+  }
+}
+
 .home-content {
   h1 {
     color: $dsa_purple;
