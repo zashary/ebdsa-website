@@ -35,7 +35,9 @@ Create your database and run migrations:
 
 ```sh
 bin/rake db:setup
+bin/rake db:seed
 ```
+
 
 And start your local server with `foreman`:
 
@@ -145,7 +147,7 @@ brew install heroku/brew/heroku
 Hook your local repo up to the Heroku app by adding a Git remote:
 
 ```sh
-heroku git:remote -a eastbaydsa-website-staging
+heroku git:remote -a eastbaydsa-staging
 ```
 
 ### Staging Environment
