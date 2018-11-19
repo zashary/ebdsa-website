@@ -25,11 +25,20 @@
   <% end %>
 
   <h2 class='calendar-heading'>
-    <%= link_to events_path(start_date: @start_date-1.month, tags: params[:tags]) do %>
+    <% if @start_date > Date.parse("April 1, 2017") %>
+      <%= link_to events_path(start_date: @start_date-1.month, tags: params[:tags]) do %>
+        <i class='fa fa-caret-left'></i>
+      <% end %>
+    <% else %>
       <i class='fa fa-caret-left'></i>
     <% end %>
     <%= @start_date.strftime('%B %Y') %>
-    <%= link_to events_path(start_date: @start_date+1.month, tags: params[:tags]) do %>
+
+    <% if @start_date < (Date.today.beginning_of_month + 3.months) %>
+      <%= link_to events_path(start_date: @start_date+1.month, tags: params[:tags]) do %>
+        <i class='fa fa-caret-right'></i>
+      <% end %>
+    <% else %>
       <i class='fa fa-caret-right'></i>
     <% end %>
   </h2>
