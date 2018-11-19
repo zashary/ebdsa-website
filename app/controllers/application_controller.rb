@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
       render json: { message: 'Access denied' }, status: :unauthorized
     end
   end
+  
+  def current_domain
+    request.host
+  end
+  helper_method :current_domain
 
   def handle_redirect
     redirect_to params[:u]

@@ -2,6 +2,7 @@
 defaults: &defaults
   homepage_hardcoded: false
   homepage_image_url: ''
+  search_in_footer: true
 
 development:
   <<: *defaults
