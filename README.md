@@ -9,12 +9,12 @@ going forward.
 
 Dependencies:
 
-* Ruby >= 2.4.0
-* Postgres
-  * [postgresapp.com](https://postgresapp.com) is a great option here
-  * Alternatively, you can install with [homebrew](https://brew.sh/)
-* bundler (gem install bundler)
-* foreman (gem install foreman)
+- Ruby >= 2.4.0
+- Postgres
+  - [postgresapp.com](https://postgresapp.com) is a great option here
+  - Alternatively, you can install with [homebrew](https://brew.sh/)
+- bundler (gem install bundler)
+- foreman (gem install foreman)
 
 ### First time setup
 
@@ -37,7 +37,6 @@ Create your database and run migrations:
 bin/rake db:setup
 bin/rake db:seed
 ```
-
 
 And start your local server with `foreman`:
 
@@ -148,6 +147,20 @@ Hook your local repo up to the Heroku app by adding a Git remote:
 
 ```sh
 heroku git:remote -a eastbaydsa-staging
+```
+
+### Running Tests
+
+Set up the test database (only once)
+
+```sh
+RAILS_ENV=test bundle exec rake db:create
+```
+
+Run the tests
+
+```sh
+bundle exec rake
 ```
 
 ### Staging Environment
