@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   include ApplicationHelper
-  
+
   before_action :log_ip, :require_nationbuilder_slug, :require_api_key
 
   def check

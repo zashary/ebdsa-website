@@ -38,7 +38,7 @@ module ApplicationHelper
     national_member = tags.include?('national_member') || tags.include?('provisional_member') rescue false
 
     if national_member
-      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_general_")} rescue false
+      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_") } rescue false
     end
 
     whitelist = ENV['AUTH0_EMAIL_WHITELIST'].to_s.split(',')
