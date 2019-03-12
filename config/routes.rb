@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  constraints(:host => /oaklandbreadfored.org/) do
+    match "/(*path)" => redirect {|params, req| "https://eastbaydsa.org/campaigns/bread-for-ed"}, via: [:get, :post]
+  end
+
   get '/events', to: 'events#index', as: :events
   get '/events/:id/:slug', to: 'events#show', as: :event
   post '/events/:id/rsvp', to: 'events#rsvp', as: :rsvp
