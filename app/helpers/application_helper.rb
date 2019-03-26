@@ -34,8 +34,11 @@ module ApplicationHelper
   def check_membership email
      # need to rescue from the API call, cause it throws an error if not found
     person = $nation_builder_client.call(:people, :match, email: email) rescue nil
-    tags = person['person']['tags']
-    national_member = tags.include?('national_member') || tags.include?('provisional_member') rescue false
+
+    if person
+      tags = person['person']['tags']
+      national_member = tags.include?('national_member') || tags.include?('provisional_member') rescue false
+    end
 
     if national_member
       national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_") } rescue false
