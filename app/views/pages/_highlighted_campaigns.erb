@@ -1,0 +1,14 @@
+<% if @highlighted_campaigns.present? %>
+  <h1>Campaigns</h1>
+
+  <div id='homepage-campaigns'>
+    <% @highlighted_campaigns.each do |campaign| %>
+      <article class='homepage-campaign'>
+        <%= image_tag( campaign.background_image_url) %>
+        <strong><%= link_to campaign.title.html_safe, page_path(campaign) %></strong>
+        <p> <%= truncate(strip_tags(campaign.content), length: 150) %> </p>
+        <%= link_to 'Get involved &#8594;'.html_safe, page_path(campaign), class: 'additional-info'  %>
+      </article>
+    <% end %>
+  </div>
+<% end %>
