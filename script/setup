@@ -1,0 +1,29 @@
+#!/bin/sh
+# Usage: script/setup
+
+set -e
+
+script/bootstrap
+
+echo "==> Turning on postgresql"
+brew services start postgresql
+if ! pg_ctl -D /usr/local/var/postgres status; then
+  echo "failed to start postgresql"
+  echo "check error logs /usr/local/var/log/postgres.log"
+  echo "If error is 'The data directory was initialized by PostgreSQL version x.x, which is not compatible with this version x.x.' run 'brew postgresql-upgrade-database'"
+  exit 1
+fi
+
+echo "==> Setting up databases"
+if [ ! -f "tmp/datadump" ]; then
+    echo "tmp/datadump does not exist"
+    echo "please add datadump file to tmp directory"
+    echo "reach out to someone to get a snapshot of the database"
+    exit 1
+fi
+
+psql -c 'DROP DATABASE IF EXISTS "ebdsa-website"'
+psql -c 'DROP DATABASE IF EXISTS "ebdsa-website-test"'
+bundle exec rake db:create
+bundle exec rake db:migrate
+pg_restore -v -a -d ebdsa-website tmp/datadump

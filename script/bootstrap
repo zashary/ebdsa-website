@@ -1,0 +1,88 @@
+#!/bin/sh
+# Usage: script/bootstrap
+# Ensures all dependencies are installed locally.
+
+set -e
+
+if [ "$1" = "--debug" ]; then
+  shift
+  PRINT_DEBUG="1"
+  set -x
+fi
+
+# md5sum function used for calculating the checksum.
+if ! which md5sum >/dev/null 2>/dev/null; then
+  md5sum() {
+    md5
+  }
+fi
+
+# checksum function returns checksum of current configuration.
+checksum() {
+  (
+    cat $0 2>/dev/null # vendor/gems
+    cat .ruby-version 2>/dev/null
+    cat Brewfile 2>/dev/null
+    cat Gemfile Gemfile.lock 2>/dev/null
+    cat bin/* 2>/dev/null
+    brew services list | grep postgresql
+    echo "$@"
+  ) | md5sum
+}
+
+bundler_args="--path vendor/gems"
+checksum_args="${bundler_args}" # if we change the path also rev the checksum.
+
+# Check the checksum.and exit early if everything is up to date
+checksum_path=.bundle/checksum
+if [ "x`cat ${checksum_path} 2>/dev/null`" = "x`checksum ${checksum_args}`" ]; then
+  echo Bundle is up-to-date.
+  exit 0
+fi
+
+echo "==> Running brew bundle"
+brew update >/dev/null
+brew bundle check &>/dev/null || brew bundle
+
+# Install ruby version from .ruby-version
+rbenv install --skip-existing `rbenv version-name`
+
+# Check if rbenv configuration is in shell config
+if [ "$(rbenv exec ruby --version)" != "$(ruby --version)" ]; then
+  case $(basename ${SHELL:-bash}) in
+  sh|bash)
+    echo 'Error: add `eval "$(rbenv init -)"` to the end of your .bash_profile!' >&2
+    ;;
+  zsh)
+    echo 'Error: add `eval "$(rbenv init -)"` to the end of your .zshrc!' >&2
+    ;;
+  *)
+    echo 'Error: you must finish setting up rbenv in your shell; check `rbenv init` for instructions!' >&2
+  esac
+  exit 1
+fi
+
+# Install bundler and foreman
+(rbenv which bundle &>/dev/null && bundle -v &>/dev/null) || {
+  # bug with bundler https://bundler.io/blog/2019/01/04/an-update-on-the-bundler-2-release.html
+  bundler_version=`cat Gemfile.lock | grep -A 1 "BUNDLED WITH" | tail -1`
+  gem install bundler -v $bundler_version
+  gem install foreman
+  rbenv rehash
+}
+
+# Install gems
+echo "==> Installing gem dependencies…"
+bundle install $bundler_args
+bundle check --path vendor/gems 2>&1 > /dev/null || {
+  bundle install --path vendor/gems --quiet --without production
+  bundle package --all
+}
+
+# Update checksum
+checksum ${checksum_args} > ${checksum_path}
+
+echo "x`cat ${checksum_path} 2>/dev/null`"
+echo "x`checksum ${checksum_args}`"
+
+echo "==> application is now bootstrapped…"

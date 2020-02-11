@@ -7,6 +7,29 @@ going forward.
 
 ## Getting Started
 
+### Quick start for OSX
+
+```sh
+# Clone the repository source to local machine:
+git clone git@github.com:eastbaydsa/website.git ebdsa-website
+cd ebdsa-website
+
+# Get credentials from someone and add them to .env
+# Get datadump file and put in tmp/ directory
+
+# In the cloned directory, run bootstrap script to setup up dependencies:
+script/bootstrap
+
+# Run script to setup the database:
+script/setup
+
+# Start local server
+script/server
+
+# Your site will be available at http://localhost:5000
+open http://localhost:5000
+```
+
 Dependencies:
 
 - Ruby >= 2.4.0
