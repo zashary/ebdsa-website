@@ -16,11 +16,12 @@
   .header__logo {
     margin-right: 15px;
     height: auto;
-    width: 220px;
+    width: 210px;
     margin-bottom: -5px;
 
     @media (max-width: $tablet_break_point) {
       width: 180px;
+      margin-right: 10px;
     }
   }
 
@@ -36,6 +37,16 @@
 
       &:first-child {
         margin-left: 0;
+      }
+
+      @media (max-width: $mobile_break_point) {
+        font-size: 20px;
+        padding: 5px 0;
+      }
+
+      @media (max-width: $tablet_break_point) {
+        font-size: 16px;
+        margin-left: 6px;
       }
 
       @media (min-width: $mobile_break_point) {
