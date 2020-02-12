@@ -8,7 +8,6 @@ class EventsController < ApplicationController
     @exclude_tags = session.key?(:userinfo) ? [] : ["private"]
 
     respond_to do |format|
-      
       format.ics do
         @events = Event.query(start_date: 1.month.ago.to_date.to_s, tags: @tags, exclude_tags: @exclude_tags)
         render plain: render_ical(@events, tags: @tags), content_type: 'text/calendar'
@@ -16,6 +15,11 @@ class EventsController < ApplicationController
 
       format.html do
         @start_date = Date.parse(params[:start_date]) rescue nil
+        if @start_date && @start_date.year < 2012
+          redirect_to events_path
+          return
+        end
+
         @start_date ||= Date.today.beginning_of_month
         params[:start_date] = @start_date.to_s # simple_calendar gem reads from params
 
