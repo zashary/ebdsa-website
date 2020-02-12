@@ -255,22 +255,10 @@
 }
 
 #home-events {
-  @media (min-width: 960px) {
-    #homepage-events {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .homepage-event {
-      margin-right: 40px;
-    }
-  }
-
   .homepage-event {
     flex: 1;
     display: flex;
     flex-direction: column;
-    flex-basis: 30%;
 
     a {
       flex: 1;
@@ -286,6 +274,26 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
         text-decoration: underline;
       }
+    }
+  }
+
+  @media (min-width: 720px) {
+    #homepage-events {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .homepage-event {
+      flex-basis: 50%;
+      box-sizing: border-box;
+      padding-right: 20px;
+    }
+  }
+
+  @media (min-width: 960px) {
+
+    .homepage-event {
+      flex-basis: 33%;
     }
   }
 }
