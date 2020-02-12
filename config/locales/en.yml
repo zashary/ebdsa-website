@@ -35,8 +35,14 @@ en:
       homepage_hardcoded: "Use HTML file at pages/home as homepage"
       homepage_image_url: "Homepage banner image"
       search_in_footer: "Show search bar in site footer?"
+
+      banner_a_show: 'Enable site-wide banner'
+      banner_b_title: 'Banner Title (bold text)'
+      banner_c_text: 'Banner content (normal text)'
+      banner_d_learn_more: 'Banner link URL'
   formtastic:
     hints:
       setting:
         homepage_hardcoded: "Otherwise, system will look for a Page with slug \"home\""
         homepage_image_url: "Required if homepage_hardcoded is set"
+        banner_t_learn_more: "Leave blank to remove 'Learn more' link"

@@ -4,6 +4,11 @@ defaults: &defaults
   homepage_image_url: ''
   search_in_footer: true
 
+  banner_a_show: false
+  banner_b_title: 'This is bold.'
+  banner_c_text: 'This is normal.'
+  banner_d_learn_more: 'https://eastbaydsa.org'
+
 development:
   <<: *defaults
 

@@ -47,6 +47,21 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ86C3S"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+    <% if Setting.banner_a_show %>
+    <div id="banner">
+      <div class="container">
+        <p>
+          <b><%= Setting.banner_b_title %></b>
+          <%= Setting.banner_c_text %>
+        </p>
+
+        <% if Setting.banner_d_learn_more && Setting.banner_d_learn_more != "" %>
+          <a href="<%= Setting.banner_d_learn_more %>">Learn more ⇒</a>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
     <div class='header'>
       <nav class='container'>
         <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
