@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :check_for_redirects, only: :show
 
   def home
-    @events = Event.query(limit: 3)
+    @events = Event.query(limit: 6)
     @posts = BlogPost.homepage.limit(3)
     @highlighted_campaigns = Page.highlighted_campaigns.order(order: :asc).limit(3)
     @show_campaigns_homepage_section = Flipper.enabled?(:campaigns_homepage_section)
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   private
 
   def check_for_redirects
-    if params[:slug] && r = (Redirect.find_by_from_path("/#{params[:slug]}/") || Redirect.find_by_from_path("/#{params[:slug]}")) 
+    if params[:slug] && r = (Redirect.find_by_from_path("/#{params[:slug]}/") || Redirect.find_by_from_path("/#{params[:slug]}"))
       r.increment! :clicks
       redirect_to r.to_url, status: :moved_permanently
     end

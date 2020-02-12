@@ -57,7 +57,7 @@
 
         <ul class='header__menu' role="menu">
           <% header_menu_items.each do |item| %>
-            <li><%= link_to item.label, item.slug %></li>
+            <li class="<%= item.label.downcase.include?('bernie') ? 'bernie' : '' %>"><%= link_to item.label, item.slug %></li>
           <% end %>
           <% if admin_signed_in? %>
             <li><%= link_to 'Admin', current_admin_path %></li>
@@ -101,8 +101,8 @@
             </p>
           </article>
         </div>
-        
-        <div class='footer__info'>        	
+
+        <div class='footer__info'>
           <% if Setting.search_in_footer %>
             <article>
               <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
@@ -114,7 +114,7 @@
               <% end %>
             </article>
           <% end %>
-        	
+
           <article>
             <p class='text-light'>About Us</p>
             <p>

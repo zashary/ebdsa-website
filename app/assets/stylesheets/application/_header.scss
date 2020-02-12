@@ -16,7 +16,7 @@
   .header__logo {
     margin-right: 20px;
     height: auto;
-    width: 274px;
+    width: 230px;
     margin-bottom: -5px;
 
     @media (max-width: $tablet_break_point) {
@@ -32,10 +32,19 @@
     text-align: right;
     li {
       display: inline-block;
-      margin-left: 15px;
+      margin-left: 10px;
 
       &:first-child {
         margin-left: 0;
+      }
+
+      @media (min-width: $mobile_break_point) {
+        &.bernie a {
+          background: white;
+          color: red;
+          padding: 8px 10px;
+          margin: -8px -5px;
+        }
       }
     }
   }

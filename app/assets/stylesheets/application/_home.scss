@@ -109,16 +109,9 @@
     display: flex;
     margin-left: -6%;
     margin-right: -6%;
-    margin-bottom: $default-spacing;
-
-    &:hover {
-      h3 {
-        text-decoration: underline;
-      }
-    }
 
     @media (min-width: 860px) {
-      margin: 0 0 $default-spacing 0;
+      margin: 0;
     }
   }
 
@@ -126,13 +119,36 @@
     color: white;
   }
 
-  .campaign-content {
-    background: rgba(0, 0, 0, 0.5);
-    padding: $default-spacing;
+  .campaign-link {
+   text-decoration: none;
+
+   h3 {
+     font-size: 40px;
+   }
+
+    &:hover {
+      h3 {
+        text-decoration: underline;
+      }
+    }
   }
 
-  #campaign-oea {
-    background-image: image-url("campaign-schools.jpg");
+  .campaign-content {
+    background: $dsa_purple;
+    padding: $default-spacing;
+    margin-left: -6%;
+    margin-right: -6%;
+    margin-bottom: $default-spacing;
+
+    @media (min-width: 860px) {
+      margin: 0 0 $default-spacing 0;
+    }
+}
+
+  #campaign-bernie {
+    background-image: image-url("campaign-bernie.jpg");
+    background-position: center right;
+    min-height: 500px;
   }
 
   #campaign-night-school {
@@ -242,6 +258,7 @@
   @media (min-width: 960px) {
     #homepage-events {
       display: flex;
+      flex-wrap: wrap;
     }
 
     .homepage-event {
@@ -253,6 +270,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    flex-basis: 30%;
 
     a {
       flex: 1;

@@ -51,12 +51,37 @@
   <%= render 'majority_homepage_section' %>
 <% end %>
 <div class='home-container home-content container container-full-width'>
-  <div id='home-news'>
-    <%= render 'featured_posts' %>
-  </div>
+  <h1>Our work</h1>
+
+    <!-- <div class="campaigns-addendum">
+     <span>Donate to BREAD FOR ED! Stand in solidarity with Oakland students and teachers!</span>
+
+     <a href="https://donorbox.org/breadfored?amount=30" target="_blank"><img src="https://d1iczxrky3cnb2.cloudfront.net/button-medium-red.png" /></a>
+   </div> -->
+
+    <div id="campaigns">
+     <a href='/bernie' target="_blank" class="campaign-link">
+       <div id="campaign-bernie" class="campaign">
+
+       </div>
+       <div class="campaign-content">
+         <h3>DSA for Bernie</h3>
+         <p>
+           We have a historic opportunity to bring democratic socialist
+           politics to millions of people. We are building a mass movement
+           of working people that can change society. Join us! 
+         </p>
+
+       </div>
+     </a>
+   </div>
 
   <div id='home-events'>
     <%= render 'upcoming_events' %>
+  </div>
+
+  <div id='home-news'>
+    <%= render 'featured_posts' %>
   </div>
 </div>
 
