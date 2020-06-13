@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register_page 'Setting' do
-  title = 'Settings'
-  menu label: title
+ActiveAdmin.register_page 'Site Configuration' do
+  menu parent: "Settings"
+
+  title = 'Site Configuration'
   display = {
-    homepage_hardcoded: :boolean,
-    homepage_image_url: :string,
+    homepage_header_text: :text,
+    homepage_image_url: :s3_url,
     search_in_footer: :boolean,
 
     banner_a_show: :boolean,
