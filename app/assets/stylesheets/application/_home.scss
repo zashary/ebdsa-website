@@ -92,96 +92,6 @@
   }
 }
 
-#campaigns {
-  color: white;
-  margin-bottom: $default-spacing;
-
-  @media (min-width: 860px) {
-    display: flex;
-  }
-
-  .campaign {
-    background-size: cover;
-    text-shadow: 1px 0 0 black;
-    text-decoration: none;
-    padding-top: 300px;
-    flex: 1;
-    display: flex;
-    margin-left: -6%;
-    margin-right: -6%;
-
-    @media (min-width: 860px) {
-      margin: 0;
-    }
-  }
-
-  a {
-    color: white;
-  }
-
-  .campaign-link {
-   text-decoration: none;
-
-   h3 {
-     font-size: 40px;
-   }
-
-    &:hover {
-      h3 {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .campaign-content {
-    background: $dsa_purple;
-    padding: $default-spacing;
-    margin-left: -6%;
-    margin-right: -6%;
-    margin-bottom: $default-spacing;
-
-    @media (min-width: 860px) {
-      margin: 0 0 $default-spacing 0;
-    }
-}
-
-  #campaign-bernie {
-    background-image: image-url("campaign-bernie.jpg");
-    background-position: center right;
-    min-height: 500px;
-  }
-
-  #campaign-night-school {
-    background-image: image-url("campaign-night-school.jpg");
-    @media (min-width: 860px) {
-      margin-left: 10px;
-    }
-  }
-}
-.centered-content {
-  text-align: center;
-}
-
-// .campaigns-addendum {
-//   background: #419143; // bread for ed color
-//   padding: $default-spacing * 1.5 $default-spacing * 1.5;
-//   color: white;
-//   font-size: 24px;
-//   margin-bottom: $default-spacing;
-//   display: flex;
-//   align-items: center;
-//   flex-wrap: wrap;
-//
-//   span {
-//     margin-right: $default-spacing;
-//     margin: $default-spacing/2 $default-spacing $default-spacing/2 0;
-//   }
-//
-//   a {
-//     margin-top: $default-spacing/2;
-//   }
-// }
-
 .home-content, .majority-title {
   h1 {
     color: $dsa_purple;
@@ -232,6 +142,23 @@
     flex-basis: 50%;
     margin-bottom: 0;
 
+    .campaign-link {
+      text-decoration: none;
+   
+      &:hover {
+        strong {
+          text-decoration: underline;
+        }
+
+        .background-wrapper .background {
+          filter: grayscale(60%) brightness(150%) contrast(50%);  
+        }
+        .color-overlay {
+          opacity: 0.75;
+        }
+      }
+    }   
+
     .background, .color-overlay, .background-wrapper {
       position: absolute;
       top: 0;
@@ -247,13 +174,14 @@
 
     .background-wrapper .color-overlay {
       opacity: 0.65;
+      transition: all 0.15s;
     }
 
     .campaign-content {
       color: white;
       position: absolute;
       bottom: 0;
-      padding: 20px;
+      padding: 30px;
     }
 
     p {

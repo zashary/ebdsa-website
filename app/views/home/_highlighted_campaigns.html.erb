@@ -4,21 +4,23 @@
 <div id='homepage-campaigns'>
   <% @highlighted_campaigns.each do |campaign| %>
   <article class='homepage-campaign'>
-    <div class='background-wrapper'>
-      <div class='background' style='background-image: url(<%= campaign.background_image_url %>)'></div>
-      <div class='color-overlay' style='background-color: <%= campaign.homepage_color || '#f00' %>'></div>
-    </div>
-    <div class='campaign-content'>
-      <strong>
-        <%= campaign.title.html_safe %>
-      </strong>
+    <a href='<%= campaign.slug %>' target="_blank" class="campaign-link">
+      <div class='background-wrapper'>
+        <div class='background' style='background-image: url(<%= campaign.background_image_url %>)'></div>
+        <div class='color-overlay' style='background-color: <%= campaign.homepage_color.presence || '#f00' %>'></div>
+      </div>
+      <div class='campaign-content'>
+        <strong>
+          <%= campaign.title.html_safe %>
+        </strong>
 
-      <p>
-        <%= campaign.homepage_text || truncate(strip_tags(campaign.content), length: 150) %>
-      </p>
+        <p>
+          <%= campaign.homepage_text.presence || truncate(strip_tags(campaign.content), length: 150) %>
+        </p>
 
-      <span>Get involved &#8594;</span>
-    </div>
+        <span>Get involved &#8594;</span>
+      </div>
+    </a>
   </article>
   <% end %>
 </div>
