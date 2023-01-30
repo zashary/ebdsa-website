@@ -16,8 +16,8 @@ class Event
   def initialize api_response
     self.id = api_response['id']
     self.name = api_response['name']
-    self.start_time = DateTime.parse api_response['start_time']
-    self.end_time = DateTime.parse api_response['end_time']
+    self.start_time = api_response['start_time'].nil? ? nil : DateTime.parse(api_response['start_time'])
+    self.end_time = api_response['end_time'].nil? ? nil : DateTime.parse(api_response['end_time'])
     self.description = api_response['intro'] # FIXME: get non-html version?
     self.venue = api_response['venue']['name']
     self.address = api_response['venue']['address'] || {}
