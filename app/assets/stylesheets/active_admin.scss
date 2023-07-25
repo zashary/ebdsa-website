@@ -12,7 +12,6 @@
 @import 'active_admin/mixins';
 @import 'active_admin/base';
 @import 'activeadmin_sortable_table';
-@import 'trix';
 //@import 'activeadmin/quill_editor_input';
 @import 'activeadmin/quill_editor/quill.snow';
 
@@ -35,15 +34,6 @@ article.content {
 
 fieldset.inputs .input {
   clear: both;
-}
-
-.trix-editor-wrapper {
-  width: 800px;
-  float: left;
-}
-
-trix-editor {
-  background: white;
 }
 
 // Adapted from activeadmin/_quill_editor_input.sass

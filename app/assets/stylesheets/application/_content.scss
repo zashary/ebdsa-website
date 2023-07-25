@@ -30,13 +30,6 @@
   }
 }
 
-/**
- * Trix previews attachments as centered, help the render match that.
- */
-.content a[data-trix-attachment] {
-  text-align: center;
-}
-
 article {
   blockquote {
     border-left: 4px solid $border_color;
