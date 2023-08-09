@@ -2,6 +2,10 @@ $(document).ready(function() {
   // The default caption is misleading, it isn't clear that you can edit
   // the field to set your own caption. Remove the default, which fills
   // in a much nicer "Add a caption..." message.
+  $('.s3_url').each(function(i, form_element) {
+    setupS3UrlField($(form_element));
+    refreshImagePreview($(form_element));
+  });
 });
 
 
