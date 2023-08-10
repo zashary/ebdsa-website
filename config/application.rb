@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,9 +11,14 @@ module EbdsaWebsite
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+
 
     # Simple Calendar config
     config.beginning_of_week = :sunday
@@ -23,7 +28,7 @@ module EbdsaWebsite
 
     # Handle errors with app controller
     config.exceptions_app = self.routes
-    
+
     config.action_controller.default_url_options = { trailing_slash: true }
     config.middleware.use Rack::AppendTrailingSlash
   end
