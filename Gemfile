@@ -26,6 +26,7 @@ gem 'foreman'
 gem 'icalendar'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'mini_portile2'
 gem 'nationbuilder-rb', require: 'nationbuilder'
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-auth0', '~> 2.0.0'
