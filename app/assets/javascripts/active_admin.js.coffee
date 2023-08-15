@@ -2,6 +2,6 @@
 #= require activeadmin_addons/all
 #= require activeadmin_sortable_table
 #= require activeadmin/quill_editor/quill
-#= require quill_editor_input
+#= require activeadmin/quill_editor_input
 #= require quill_link
 #= require attachments
