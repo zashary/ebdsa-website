@@ -216,6 +216,18 @@ You can use the Heroku CLI to open the app in your browser:
 heroku open
 ```
 
+## Suggested Testing Steps
+
+Suggested testing steps for major version updates. These don't need to be run on every update but are good to run if you're worried about possible breaking changes.
+
+It's best to test these in [staging](https://eastbaydsa-staging.herokuapp.com/).
+
+- Go through a couple of pages and make everything looks similar to production. Such as [committees](https://eastbaydsa-staging.herokuapp.com/committees/), and [donate](https://eastbaydsa-staging.herokuapp.com/donate/).
+- Make sure the [calendar page](https://eastbaydsa-staging.herokuapp.com/events/) loads
+- Log into the [admin page](https://eastbaydsa-staging.herokuapp.com/admin/)
+-- Create a new content page, with an uploaded file [here](https://eastbaydsa-staging.herokuapp.com/admin/pages/new/)
+
+
 ## Troubleshooting
 
 ### Updating your DB
