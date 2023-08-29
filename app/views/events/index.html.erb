@@ -34,11 +34,7 @@
     <% end %>
     <%= @start_date.strftime('%B %Y') %>
 
-    <% if @start_date < (Date.today.beginning_of_month + 3.months) %>
-      <%= link_to events_path(start_date: @start_date+1.month, tags: params[:tags]) do %>
-        <i class='fa fa-caret-right'></i>
-      <% end %>
-    <% else %>
+    <%= link_to events_path(start_date: @start_date+1.month, tags: params[:tags]) do %>
       <i class='fa fa-caret-right'></i>
     <% end %>
   </h2>
