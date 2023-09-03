@@ -226,6 +226,7 @@ It's best to test these in [staging](https://eastbaydsa-staging.herokuapp.com/).
 - Make sure the [calendar page](https://eastbaydsa-staging.herokuapp.com/events/) loads
 - Log into the [admin page](https://eastbaydsa-staging.herokuapp.com/admin/)
 -- Create a new content page, with an uploaded file [here](https://eastbaydsa-staging.herokuapp.com/admin/pages/new/)
+- Attempt to export the events calendar ICS file, file should at least download
 
 
 ## Troubleshooting
