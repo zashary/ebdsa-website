@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <% if  ENV.fetch("ENABLE_GOOGLE_ANALYTICS", "true") == "true" %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q8WTPE3PH"></script>
     <script>
@@ -11,6 +12,7 @@
       gtag('config', 'G-5Q8WTPE3PH');
     </script>
     <!-- End Google tag (gtag.js) -->
+    <% end %>
 
     <title><%= [yield(:title), 'East Bay DSA'].select(&:present?).join(' - ') %></title>
     <%= csrf_meta_tags %>
