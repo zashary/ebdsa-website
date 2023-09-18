@@ -30,6 +30,7 @@
 
 class Page < ApplicationRecord
   include HasSlug
+  has_paper_trail
 
   scope :listed,                -> { where(listed: true) }
   scope :highlighted_campaigns, -> { where(homepage_campaign: true).order(order: :asc) }

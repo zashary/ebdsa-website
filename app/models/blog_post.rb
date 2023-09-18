@@ -24,6 +24,7 @@
 
 class BlogPost < ApplicationRecord
   include HasSlug
+  has_paper_trail
 
   scope :listed, -> { where(listed: true).order('posted_at DESC') }
   scope :homepage, -> { where(listed: true, featured: true).order('posted_at DESC') }
