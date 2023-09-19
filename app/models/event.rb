@@ -62,11 +62,11 @@ class Event
     fields.map{|field| address[field] }.select(&:present?).join(', ')
   end
 
-  def self.query(start_date: Date.today, end_date: nil, limit: 500, tags: [], exclude_tags: [])
+  def self.query(start_date: Date.today, end_date: nil, limit: 500, get_all_results: false, tags: [], exclude_tags: [])
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
       starting: start_date,
-      limit: limit
+      limit: [limit, 500].min, # Limit for each pagination call, 500 is most you can get from list
     }
     opts[:until] = end_date if end_date
 
@@ -92,7 +92,7 @@ class Event
           # 'other' category - event lacks any of our listed tags, but other was checked:
           ((TAGS.keys & event.tags).blank? && other)
         }
-      break unless response.next.present?
+      break unless response.next.present? && get_all_results
       response = response.next
     end
     @events
