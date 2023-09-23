@@ -62,11 +62,11 @@ class Event
     fields.map{|field| address[field] }.select(&:present?).join(', ')
   end
 
-  def self.query(start_date: Date.today, end_date: nil, limit: 500, get_all_results: false, tags: [], exclude_tags: [])
+  def self.query(start_date: Date.today, end_date: nil, limit: nil, tags: [], exclude_tags: [])
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
       starting: start_date,
-      limit: [limit, 500].min, # Limit for each pagination call, 500 is most you can get from list
+      limit: 500, # Limit for each pagination call, 500 is most you can get from list
     }
     opts[:until] = end_date if end_date
 
@@ -83,7 +83,6 @@ class Event
       @events += response.body['results']
         .select{ |e| ['published', 'expired'].include?(e['status']) }
         .sort_by{ |e| e['start_time']} # NationBuilder API returns unsorted events
-        .take(limit)
         .map{ |e| Event.new(e) }
         .select{ |event|
           next true if tags.blank? and other.blank? and exclude_tags.blank? # return all events if no tags provided
@@ -92,8 +91,12 @@ class Event
           # 'other' category - event lacks any of our listed tags, but other was checked:
           ((TAGS.keys & event.tags).blank? && other)
         }
-      break unless response.next.present? && get_all_results
+      break unless response.next.present?
       response = response.next
+    end
+    @events = @events.sort_by { |e| e.start_time}
+    if limit.present?
+      @events = @events[0..(limit - 1)]
     end
     @events
   end
