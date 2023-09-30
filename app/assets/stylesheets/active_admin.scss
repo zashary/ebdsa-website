@@ -12,7 +12,7 @@
 @import 'active_admin/mixins';
 @import 'active_admin/base';
 @import 'activeadmin_sortable_table';
-//@import 'activeadmin/quill_editor_input';
+@import 'activeadmin/quill_editor_input';
 @import 'activeadmin/quill_editor/quill.snow';
 
 // Overriding any non-variable SASS must be done after the fact.

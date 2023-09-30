@@ -70,7 +70,7 @@ ActiveAdmin.register Page do
     end
     f.inputs 'Content' do
       f.input :background_image_url, as: :s3_url, label: 'Header image'
-      f.input :content, as: :quill_editor
+      f.input :content, as: :quill_editor, input_html: { data: { options: { modules: { toolbar: [[{'font': []}], [{'header': [1,2,3, false]}], ['bold', 'italic', 'underline'], ['blockquote'], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'align': [] }], ['link', 'image']] }, placeholder: 'Type something...', theme: 'snow' } } }
     end
     f.inputs 'Homepage feature' do
       f.input :homepage_campaign, as: :boolean, label: 'Feature as homepage campaign'
