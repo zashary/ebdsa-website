@@ -18,7 +18,7 @@ class Event
     self.name = api_response['name']
     self.start_time = api_response['start_time'].nil? ? nil : DateTime.parse(api_response['start_time'])
     self.end_time = api_response['end_time'].nil? ? nil : DateTime.parse(api_response['end_time'])
-    self.description = api_response['intro'] # FIXME: get non-html version?
+    self.description = api_response['intro']
     self.venue = api_response['venue']['name']
     self.address = api_response['venue']['address'] || {}
     self.image_url = api_response['meta_image_url'] # FIXME: image URL not returned!
@@ -38,7 +38,7 @@ class Event
     ical_event.dtstart     = Icalendar::Values::DateTime.new start_time, 'tzid' => DEFAULT_TIMEZONE
     ical_event.dtend       = Icalendar::Values::DateTime.new end_time, 'tzid' => DEFAULT_TIMEZONE
     ical_event.summary     = name
-    ical_event.description = ActionView::Base.full_sanitizer.sanitize(description)
+    ical_event.description = description
     ical_event.url         = options[:url]
     ical_event.location    = full_address
     ical_event
@@ -50,7 +50,7 @@ class Event
     uri.query = URI.encode_www_form(
       action: 'TEMPLATE',
       text: name,
-      details: ActionView::Base.full_sanitizer.sanitize(description),
+      details: description,
       location: full_address,
       dates: "#{start_time.strftime('%Y%m%dT%H%M%S')}/#{end_time.strftime('%Y%m%dT%H%M%S')}"
     )
@@ -62,7 +62,7 @@ class Event
     fields.map{|field| address[field] }.select(&:present?).join(', ')
   end
 
-  def self.query(start_date: Date.today, end_date: nil, limit: nil, tags: [], exclude_tags: [])
+  def self.query(start_date: Date.today, end_date: nil, size: nil, tags: [], exclude_tags: [])
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
       starting: start_date,
@@ -95,8 +95,8 @@ class Event
       response = response.next
     end
     @events = @events.sort_by { |e| e.start_time}
-    if limit.present?
-      @events = @events[0..(limit - 1)]
+    if size.present?
+      @events = @events[0..(size - 1)]
     end
     @events
   end
