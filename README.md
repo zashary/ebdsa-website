@@ -39,6 +39,25 @@ Dependencies:
 - bundler (gem install bundler)
 - foreman (gem install foreman)
 
+### Postgres Setup
+
+Local development will require you have a postgres server setup within your environment. You can find a list of installers [here](https://www.postgresql.org/download/).
+
+You will need to create a new user with create database permissions.
+
+```
+$ CREATE USER <username> WITH PASSWORD '<password>';
+$ ALTER USER <username> CREATEDB;
+```
+
+You will then need to pass the database username and password into the `.env` file.
+
+```
+DATABASE_USER=<username>
+DATABASE_PASSWORD=<password>
+```
+
+
 ### First time setup
 
 Clone the repository source to local machine:
