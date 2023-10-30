@@ -33,8 +33,7 @@
       <%= content_tag(:p, @page.subtitle, class: 'text-light') if @page.subtitle.present? %>
     </div>
   <% end %>
-
-  <div class='quill-output'><%= @page.content.html_safe %></div>
+    <div class='page-body quill-output'><%= @page.content.html_safe %></div>
 </article>
 
 <% if @page.show_form %>

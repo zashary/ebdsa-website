@@ -44,7 +44,7 @@ ActiveAdmin.register Page do
       end 
       row :content do |page|
         article class: 'content' do
-          page.content.html_safe
+          page.content&.html_safe
         end
       end
     end
@@ -70,7 +70,12 @@ ActiveAdmin.register Page do
     end
     f.inputs 'Content' do
       f.input :background_image_url, as: :s3_url, label: 'Header image'
-      f.input :content, as: :quill_editor, input_html: { data: { options: { modules: { toolbar: [[{'font': []}], [{'header': [1,2,3, false]}], ['bold', 'italic', 'underline'], ['blockquote'], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'align': [] }], ['link', 'image']] }, placeholder: 'Type something...', theme: 'snow' } } }
+      f.input :raw_html, hint: 'Treat the following input as raw html input to be shown'
+      if f.object.raw_html
+        f.input :html_content, as: :text, label: 'Raw HTML (will override Content section)'
+      else
+        f.input :content, as: :quill_editor, input_html: { data: { options: { modules: { toolbar: [[{'font': []}], [{'header': [1,2,3, false]}], ['bold', 'italic', 'underline'], ['blockquote'], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'script': 'sub'}, { 'script': 'super' }], [{ 'indent': '-1'}, { 'indent': '+1' }], [{ 'align': [] }], ['link', 'image']] }, placeholder: 'Type something...', theme: 'snow' } } }
+      end
     end
     f.inputs 'Homepage feature' do
       f.input :homepage_campaign, as: :boolean, label: 'Feature as homepage campaign'
@@ -95,5 +100,5 @@ ActiveAdmin.register Page do
   permit_params :title, :subtitle, :content, :slug, :parent_id, :listed,
     :show_form, :form_collect_phone, :form_tags, :order,
     :background_image_url, :meta_title, :meta_desc, :homepage_campaign, 
-    :homepage_text, :homepage_color
+    :homepage_text, :homepage_color, :raw_html, :html_content
 end

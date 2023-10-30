@@ -1,3 +1,5 @@
+require 'nokogiri' 
+
 # == Schema Information
 #
 # Table name: pages
@@ -32,6 +34,8 @@ class Page < ApplicationRecord
   include HasSlug
   has_paper_trail
 
+  attr_accessor :html_content
+
   scope :listed,                -> { where(listed: true) }
   scope :highlighted_campaigns, -> { where(homepage_campaign: true).order(order: :asc) }
 
@@ -41,6 +45,7 @@ class Page < ApplicationRecord
   validates :form_tags, presence: true, if: :show_form?
 
   alias_attribute :to_param, :slug
+  before_validation :check_html_value
 
   def all_parents
     parents = []
@@ -53,4 +58,28 @@ class Page < ApplicationRecord
   end
 
   def home?; slug == 'home'; end
+
+  #
+  # HTML Content
+  #
+
+  # Allow saving of direct html content if "raw_html" passed
+  # This is being added to easier allow email listings and other html sources to be added to the site without edits
+
+  def html_content
+    @html_content ||= self.content
+  end
+
+  def html_content=(val)
+    doc = Nokogiri.HTML(val)
+    doc.css('script').remove # Remove any javascript to be safe
+    doc.xpath("//@*[starts-with(name(),'on')]").remove # Remove on____ attributes
+    @html_content = doc
+  end
+
+  def check_html_value
+    if raw_html
+      self.content = @html_content
+    end
+  end
 end

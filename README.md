@@ -57,7 +57,6 @@ DATABASE_USER=<username>
 DATABASE_PASSWORD=<password>
 ```
 
-
 ### First time setup
 
 Clone the repository source to local machine:
@@ -87,6 +86,25 @@ foreman start
 ```
 
 Your site will be available at http://localhost:5000
+
+### Create Admin User locally
+
+To create an admin user in your local database, first exec to a rails console
+
+```
+bundle exec rails console
+```
+
+Then run the following
+
+```
+irb(main):002:1* Admin.create! do |u|
+irb(main):003:1*   u.email = '<email>'
+irb(main):004:1*   u.password = '<password>'
+irb(main):005:1*   u.password_confirmation = '<password>'
+irb(main):006:0> end
+```
+
 
 ### NationBuilder Data
 

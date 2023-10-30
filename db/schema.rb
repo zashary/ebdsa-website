@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_03_053109) do
+ActiveRecord::Schema.define(version: 2023_10_23_052421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2023_09_03_053109) do
     t.boolean "homepage_campaign"
     t.text "homepage_text"
     t.text "homepage_color"
+    t.boolean "raw_html", default: false
     t.index ["order"], name: "index_pages_on_order", unique: true
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
