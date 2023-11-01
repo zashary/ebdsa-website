@@ -67,7 +67,34 @@ git clone git@github.com:eastbaydsa/website.git ebdsa-website
 cd ebdsa-website
 ```
 
-In the cloned directory, install your gem dependencies with `bundler`:
+In the cloned directory, check to see if the bundler is installed:
+
+```sh 
+gem list bundler
+```
+
+If you're not using a ruby version manager, it is recommended you do so to reduce security risks and potential conflicts that can occur when you install gems system-wide. An alternative is rbenv, but for this document we'll be using rvm. 
+
+# Install rvm 
+
+```sh
+curl -sSL https://get.rvm.io | bash -s stable
+```
+
+# Install openssl
+
+```sh
+brew install openssl
+```
+
+# Install ruby with openssl
+```sh
+rvm install 3.0.6 --with-openssl-dir=/usr/local/bin/openssl
+# To find out where your openssl binary lives, run the following
+which openssl
+```
+
+Install your gem dependencies with `bundler`:
 
 ```sh
 bundle install
