@@ -33,6 +33,7 @@ gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-auth0', '~> 2.0.0'
 gem 'paper_trail'
 gem 'pg', '~> 1.1'
+gem 'psych', '< 4'
 gem 'puma', '~> 3.12'
 gem 'rack-slashenforce'
 gem 'rails', '~> 6.1.7.4'
@@ -44,6 +45,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker', '~>3.0'
 gem 'will_paginate', '~> 3.3.1'
 
 group :development, :test do
