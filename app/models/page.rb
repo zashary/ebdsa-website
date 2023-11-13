@@ -82,4 +82,15 @@ class Page < ApplicationRecord
       self.content = @html_content
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["background_image_url", "content", "created_at", "form_collect_phone", "form_tags", "homepage_campaign",
+     "homepage_color", "homepage_text", "id", "listed", "meta_desc", "meta_title", "order", "parent_id", "raw_html",
+      "show_form", "slug", "subtitle", "title", "to_param", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["parent", "subpages", "versions"]
+  end
+
 end

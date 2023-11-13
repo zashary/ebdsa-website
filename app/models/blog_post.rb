@@ -31,4 +31,13 @@ class BlogPost < ApplicationRecord
 
   belongs_to :author, class_name: 'Admin'
   alias_attribute :to_param, :slug
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["author_id", "content", "created_at", "featured", "featured_image", "id", "listed", "meta_desc", "meta_title", "posted_at", "slug", "title", "to_param", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["author", "versions"]
+  end
+
 end

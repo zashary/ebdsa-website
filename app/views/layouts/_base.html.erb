@@ -36,20 +36,6 @@
   </head>
 
   <body>
-    <% if Setting.banner_a_show %>
-    <div id="banner">
-      <div class="container">
-        <p>
-          <b><%= Setting.banner_b_title %></b>
-          <%= Setting.banner_c_text %>
-        </p>
-
-        <% if Setting.banner_d_learn_more && Setting.banner_d_learn_more != "" %>
-          <a href="<%= Setting.banner_d_learn_more %>">Learn more ⇒</a>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
 
     <div class='header'>
       <nav class='container'>
@@ -107,17 +93,15 @@
         </div>
 
         <div class='footer__info'>
-          <% if Setting.search_in_footer %>
-            <article>
-              <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
-                <div class='form__group'>
-                  <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
-                  <%= hidden_field_tag 'q' %>
-                  <%= submit_tag 'Search', class: 'button button-primary' %>
-                </div>
-              <% end %>
-            </article>
-          <% end %>
+          <article>
+            <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
+              <div class='form__group'>
+                <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
+                <%= hidden_field_tag 'q' %>
+                <%= submit_tag 'Search', class: 'button button-primary' %>
+              </div>
+            <% end %>
+          </article>
 
           <article>
             <p class='text-light'>About Us</p>

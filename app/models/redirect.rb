@@ -18,4 +18,9 @@ class Redirect < ApplicationRecord
   def from_path_different_from_to_url
     self.errors[:to_url] << 'cannot be the same as from_path' if to_url == from_path
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["clicks", "created_at", "from_path", "id", "to_url", "updated_at"]
+  end
+  
 end

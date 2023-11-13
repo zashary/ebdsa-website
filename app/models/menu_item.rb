@@ -20,4 +20,8 @@ class MenuItem < ApplicationRecord
   validates :label, presence: true
   validates :slug, presence: true, format: { with: /\A(\/|http).*/i, message: 'must begin with "/" or "http"'}
   validates :container, presence: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["container", "created_at", "id", "label", "position", "slug", "updated_at"]
+  end
 end
