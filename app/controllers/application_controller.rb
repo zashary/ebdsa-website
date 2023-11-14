@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :redirect_to_https
   protect_from_forgery with: :exception
 
   layout 'application'
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
 
   def handle_redirect
     redirect_to params[:u]
+  end
+
+  def redirect_to_https
+    redirect_to :protocol => "https://" unless (request.ssl? || request.local?)
   end
 
   def handle_unsubscribe
