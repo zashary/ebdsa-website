@@ -1,0 +1,48 @@
+<% content_for :title, 'Split Dues' %>
+<h2>Give <span style="color: #ed2c24;"><b>1%</b></span> for the <span style="color: #ed2c24;"><b>99%</b></span> to build working class power </h2>
+
+<p>Fighting the billionaires requires resources, and like unions and other working-class organizations, we must fund ourselves. When you start your local dues, we can: </p>
+
+
+<p><b>
+<li>Organize rank-and-file workers to fight the bosses</li>
+<li>Elect socialists who will confront the ruling class </br></li>
+<li>Take power back from the billionaires who burn our planet </br></li>
+</b>
+</p>
+
+
+<form class="calculator">
+    <label style="padding:1%;"> Your annual income </label> </br>
+    <input type="text" id="income" placeholder="Enter your income" style="padding: 1%; margin-bottom: 10px;" oninput="calculatePercentage()"></br>
+    <div id="calculator-results">
+    <button type="button" id="percentageButton1" class="calculator-input" disabled>1% of income</button>
+    <button type="button" id="percentageButton2" class="calculator-input" disabled>2% of income</button>
+    <button type="button" id="percentageButton3"  class="calculator-input" disabled>3% of income</input>
+    </div>
+    <div>
+    <input onclick="location.href='https://donorbox.org/donate-to-ebdsa?default_interval=m&amount=18.65'" class="button button-primary" type="button" value="Local Dues"></input>
+    <input onclick="location.href='https://act.dsausa.org/donate/donation?source=East_Bay'" class="button button-primary" type="button" value="National Dues"></input>
+    </div>
+</form>
+</div>
+
+ <script>    
+        function calculatePercentage() {
+            var input = document.getElementById("income").value;
+            var number = parseInt(input);
+        
+            var percentage1 = ((number / 100) * 1).toFixed(2);
+            var percentage2 = ((number / 100) * 2).toFixed(2);
+            var percentage3 = ((number / 100) * 3).toFixed(2);
+        
+            const button1 = document.getElementById("percentageButton1");
+            const button2 = document.getElementById("percentageButton2");
+            const button3 = document.getElementById("percentageButton3");
+        
+            button1.innerText = "1% of income \n " + "$" + percentage1 + "/mo";
+            button2.innerText = "2% of income \n" + "$" + percentage2 + "/mo";
+            button3.innerText = "3% of income \n" + "$" + percentage3 + "/mo";
+        }
+ </script>
+
